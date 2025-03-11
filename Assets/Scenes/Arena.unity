@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenMovements: 0.25
+  snakeHead: {fileID: 556653345}
+  snakeBodies:
+  - {fileID: 1921044654}
+  snakeTail: {fileID: 1615538476}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

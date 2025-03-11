@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 enum Direction
@@ -12,6 +13,10 @@ public class SnakeController : MonoBehaviour
 {
     [SerializeField]
     private float timeBetweenMovements = 0.25f;
+
+    [SerializeField] private GameObject snakeHead;
+    [SerializeField] private GameObject[] snakeBodies;
+    [SerializeField] private GameObject snakeTail;
     
     private float _timeElapsed;
     private Direction _currentDirection = Direction.Right;
@@ -67,19 +72,26 @@ public class SnakeController : MonoBehaviour
         if (_timeElapsed >= timeBetweenMovements)
         {
             _timeElapsed = 0f;
+            snakeTail.transform.position = snakeBodies.Last().transform.position;
+            for (int i = snakeBodies.Length - 1; i > 0; i--)
+            {
+                snakeBodies[i].transform.position = snakeBodies[i - 1].transform.position;
+            }
+            snakeBodies[0].transform.position = snakeHead.transform.position;
+            
             switch (_currentDirection)
             {
                 case Direction.Up:
-                    transform.Translate(0, 1, 0);
+                    snakeHead.transform.Translate(0, 1, 0);
                     break;
                 case Direction.Down:
-                    transform.Translate(0, -1, 0);
+                    snakeHead.transform.Translate(0, -1, 0);
                     break;
                 case Direction.Left:
-                    transform.Translate(-1, 0, 0);
+                    snakeHead.transform.Translate(-1, 0, 0);
                     break;
                 case Direction.Right:
-                    transform.Translate(1, 0, 0);
+                    snakeHead.transform.Translate(1, 0, 0);
                     break;
             }
         }
