@@ -38,14 +38,20 @@ public class SnakeController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput > 0)
         {
-            _currentDirection = Direction.Right;
+            if (_currentDirection != Direction.Left)
+            {
+                _currentDirection = Direction.Right;
+            }
 
             return;
         }
         
         if (horizontalInput < 0)
         {
-            _currentDirection = Direction.Left;
+            if (_currentDirection != Direction.Right)
+            {
+                _currentDirection = Direction.Left;
+            }
 
             return;
         }
@@ -53,14 +59,20 @@ public class SnakeController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         if (verticalInput > 0)
         {
-            _currentDirection = Direction.Up;
+            if (_currentDirection != Direction.Down)
+            {
+                _currentDirection = Direction.Up;
+            }
 
             return;
         }
         
         if (verticalInput < 0)
         {
-            _currentDirection = Direction.Down;
+            if (_currentDirection != Direction.Up)
+            {
+                _currentDirection = Direction.Down;
+            }
 
             return;
         }
