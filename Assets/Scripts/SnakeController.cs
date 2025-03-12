@@ -15,15 +15,25 @@ public class SnakeController : MonoBehaviour
     private float timeBetweenMovements = 0.25f;
 
     [SerializeField] private GameObject snakeHead;
+    private SpriteRenderer _snakeHeadSprite;
+    
     [SerializeField] private GameObject[] snakeBodies;
+    private SpriteRenderer[] _snakeBodiesSprites;
+    
     [SerializeField] private GameObject snakeTail;
+    private SpriteRenderer _snakeTailSprite;
     
     private float _timeElapsed;
     private Direction _currentDirection = Direction.Right;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _snakeHeadSprite = snakeHead.GetComponent<SpriteRenderer>();
+        for (int i = 0; i < snakeBodies.Length; i++)
+        {
+            _snakeBodiesSprites[i] = snakeBodies[i].GetComponent<SpriteRenderer>();
+        }
+        _snakeTailSprite = snakeTail.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -112,15 +122,23 @@ public class SnakeController : MonoBehaviour
         {
             case Direction.Up:
                 snakeHead.transform.Translate(0, 1, 0);
+                snakeHead.transform.rotation = Quaternion.Euler(0, 0, 90);
+                _snakeHeadSprite.flipX = false;
                 break;
             case Direction.Down:
                 snakeHead.transform.Translate(0, -1, 0);
+                snakeHead.transform.rotation = Quaternion.Euler(0, 0, -90);
+                _snakeHeadSprite.flipX = false;
                 break;
             case Direction.Left:
                 snakeHead.transform.Translate(-1, 0, 0);
+                snakeHead.transform.rotation = Quaternion.Euler(0, 0, 0);
+                _snakeHeadSprite.flipX = true;
                 break;
             case Direction.Right:
                 snakeHead.transform.Translate(1, 0, 0);
+                snakeHead.transform.rotation = Quaternion.Euler(0, 0, 0);
+                _snakeHeadSprite.flipX = false;
                 break;
         }
     }
