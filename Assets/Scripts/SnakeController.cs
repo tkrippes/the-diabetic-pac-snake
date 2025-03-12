@@ -84,28 +84,44 @@ public class SnakeController : MonoBehaviour
         if (_timeElapsed >= timeBetweenMovements)
         {
             _timeElapsed = 0f;
-            snakeTail.transform.position = snakeBodies.Last().transform.position;
-            for (int i = snakeBodies.Length - 1; i > 0; i--)
-            {
-                snakeBodies[i].transform.position = snakeBodies[i - 1].transform.position;
-            }
-            snakeBodies[0].transform.position = snakeHead.transform.position;
             
-            switch (_currentDirection)
-            {
-                case Direction.Up:
-                    snakeHead.transform.Translate(0, 1, 0);
-                    break;
-                case Direction.Down:
-                    snakeHead.transform.Translate(0, -1, 0);
-                    break;
-                case Direction.Left:
-                    snakeHead.transform.Translate(-1, 0, 0);
-                    break;
-                case Direction.Right:
-                    snakeHead.transform.Translate(1, 0, 0);
-                    break;
-            }
+            MoveTail();
+            MoveBodies();
+            MoveHead();
+        }
+    }
+
+    private void MoveTail()
+    {
+        snakeTail.transform.position = snakeBodies.Last().transform.position;
+    }
+    
+    private void MoveBodies()
+    {
+        for (int i = snakeBodies.Length - 1; i > 0; i--)
+        {
+            snakeBodies[i].transform.position = snakeBodies[i - 1].transform.position;
+        }
+
+        snakeBodies[0].transform.position = snakeHead.transform.position;
+    }
+    
+    private void MoveHead()
+    {
+        switch (_currentDirection)
+        {
+            case Direction.Up:
+                snakeHead.transform.Translate(0, 1, 0);
+                break;
+            case Direction.Down:
+                snakeHead.transform.Translate(0, -1, 0);
+                break;
+            case Direction.Left:
+                snakeHead.transform.Translate(-1, 0, 0);
+                break;
+            case Direction.Right:
+                snakeHead.transform.Translate(1, 0, 0);
+                break;
         }
     }
 }
