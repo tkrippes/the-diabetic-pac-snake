@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://0pnknsadyne7"]
+
+[ext_resource type="Texture2D" uid="uid://cvjk5dycvdc5u" path="res://assets/art/Arena.png" id="1_a6btd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
+texture = ExtResource("1_a6btd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_rwgxs")
