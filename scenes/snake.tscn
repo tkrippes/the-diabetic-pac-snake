@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqqmj8c047o68"]
+
+[ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/Snake.png" id="1_a5f6l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5f6l"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yc36x"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_auphx"]
+radius = 16.0
+
+[node name="Snake" type="Node2D"]
+
+[node name="Head" type="CharacterBody2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Head"]
+position = Vector2(32, 0)
+texture = ExtResource("1_a5f6l")
+hframes = 3
+frame = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Head"]
+shape = SubResource("CircleShape2D_a5f6l")
+
+[node name="Body" type="CharacterBody2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+texture = ExtResource("1_a5f6l")
+hframes = 3
+frame = 1
+
+[node name="Hitbox" type="CollisionShape2D" parent="Body"]
+position = Vector2(-32, 0)
+shape = SubResource("CircleShape2D_yc36x")
+
+[node name="Tail" type="CharacterBody2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Tail"]
+position = Vector2(-32, 0)
+texture = ExtResource("1_a5f6l")
+hframes = 3
+
+[node name="Hitbox" type="CollisionShape2D" parent="Tail"]
+position = Vector2(32, 0)
+shape = SubResource("CircleShape2D_auphx")
