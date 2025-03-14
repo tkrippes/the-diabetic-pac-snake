@@ -59,21 +59,19 @@ func _on_movement_timer_timeout() -> void:
 	
 	
 func start() -> void:
-	head.position = _head_initial_position
-	head.rotation_degrees = 0
-	bodies[0].position = _body_initial_position
-	bodies[0].rotation_degrees = 0
-	tail.position = _tail_initial_position
-	tail.rotation_degrees = 0
+	movement_timer.start()
+	
+	
+func reset() -> void:
+	_reset_head()
+	_reset_bodies()
+	_reset_tail()	
 	
 	show()
 	
-	_last_direction = Direction.RIGHT
-	_current_direction = Direction.RIGHT
-
-	movement_timer.start()
-
-
+	_reset_directions()
+	
+	
 func _update_tail() -> void:
 	_rotate_tail()
 	_move_tail()
@@ -172,3 +170,26 @@ func _die() -> void:
 	movement_timer.stop()
 	died.emit()
 	hide()
+
+
+func _reset_head() -> void:
+	head.position = _head_initial_position
+	head.rotation_degrees = 0
+	head_sprite.flip_v = false
+
+
+func _reset_bodies() -> void:
+	bodies[0].position = _body_initial_position
+	bodies[0].rotation_degrees = 0
+	body_sprites[0].flip_v = false
+
+
+func _reset_tail() -> void:
+	tail.position = _tail_initial_position
+	tail.rotation_degrees = 0
+	tail_sprite.flip_v = false
+
+
+func _reset_directions() -> void:
+	_last_direction = Direction.RIGHT
+	_current_direction = Direction.RIGHT

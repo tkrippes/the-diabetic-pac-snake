@@ -12,3 +12,7 @@ func _on_snake_died() -> void:
 
 func start_snake() -> void:
 	snake.start()
+	
+	
+func reset_snake() -> void:
+	snake.reset()

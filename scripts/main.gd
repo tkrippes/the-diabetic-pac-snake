@@ -32,10 +32,11 @@ func _start_game() -> void:
 	user_interface.show_score_label()
 	world.start_snake()
 	
-	
+
 func _restart_game() -> void:
 	_state = GameState.START
 	user_interface.show_start_label()
+	world.reset_snake()
 	
 	
 func _update_score(score: int) -> void:
