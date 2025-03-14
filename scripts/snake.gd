@@ -1,4 +1,7 @@
+class_name Snake
 extends Node2D
+
+signal died
 
 enum Direction {
 	UP,
@@ -11,14 +14,27 @@ enum Direction {
 
 @onready var head: CharacterBody2D = $Head
 @onready var head_sprite: Sprite2D = $Head/Sprite
+
 @onready var bodies: Array[CharacterBody2D] = [$Body]
 @onready var body_sprites: Array[Sprite2D] = [$Body/Sprite]
+
 @onready var tail: CharacterBody2D = $Tail
 @onready var tail_sprite: Sprite2D = $Tail/Sprite
 
+@onready var movement_timer: Timer = $MovementTimer
+
+var _head_initial_position: Vector2
+var _body_initial_position: Vector2
+var _tail_initial_position: Vector2
 
 var _last_direction := Direction.RIGHT
 var _current_direction := Direction.RIGHT
+
+
+func _ready() -> void:
+	_head_initial_position = head.position
+	_body_initial_position = bodies[0].position
+	_tail_initial_position = tail.position
 
 
 func _process(_delta: float) -> void:
@@ -40,6 +56,22 @@ func _on_movement_timer_timeout() -> void:
 	_update_tail()
 	_update_bodies()
 	_update_head()
+	
+	
+func start() -> void:
+	head.position = _head_initial_position
+	head.rotation_degrees = 0
+	bodies[0].position = _body_initial_position
+	bodies[0].rotation_degrees = 0
+	tail.position = _tail_initial_position
+	tail.rotation_degrees = 0
+	
+	show()
+	
+	_last_direction = Direction.RIGHT
+	_current_direction = Direction.RIGHT
+
+	movement_timer.start()
 
 
 func _update_tail() -> void:
@@ -102,7 +134,7 @@ func _move_head() -> void:
 	var collision := head.move_and_collide(position_offset)
 	if (collision):
 		if (collision.get_collider() as Node).is_in_group("walls"):
-			queue_free()
+			_die()
 		
 	_last_direction = _current_direction
 
@@ -134,3 +166,9 @@ func _rotate(character: CharacterBody2D, sprite: Sprite2D, direction: Direction)
 		Direction.RIGHT:
 			character.rotation_degrees = 0
 			sprite.flip_v = false
+
+	
+func _die() -> void:
+	movement_timer.stop()
+	died.emit()
+	hide()
