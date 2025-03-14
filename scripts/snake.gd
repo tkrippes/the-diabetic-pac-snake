@@ -16,6 +16,21 @@ enum Direction {
 var _current_direction := Direction.RIGHT;
 
 
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("move_up"):
+		if _current_direction != Direction.DOWN:
+			_current_direction = Direction.UP
+	elif Input.is_action_pressed("move_down"):
+		if _current_direction != Direction.UP:
+			_current_direction = Direction.DOWN
+	elif Input.is_action_pressed("move_left"):
+		if _current_direction != Direction.RIGHT:
+			_current_direction = Direction.LEFT
+	elif Input.is_action_pressed("move_right"):
+		if _current_direction != Direction.LEFT:
+			_current_direction = Direction.RIGHT
+
+
 func _on_movement_timer_timeout() -> void:
 	_move_tail()
 	_move_bodies()
