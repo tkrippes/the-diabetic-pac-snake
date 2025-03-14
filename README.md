@@ -12,6 +12,7 @@ Snake is a single player game. You are playing as a snake who needs to eat fruit
 - Move down: `Arrow Down` or `S`
 - Move left: `Arrow Left` or `A`
 - Move right: `Arrow Right` or `D`
+- Start / restart game: `Enter`
 
 ### Controller
 
@@ -19,3 +20,4 @@ Snake is a single player game. You are playing as a snake who needs to eat fruit
 - Move down: `Left Joystick Down` or `D-pad Down`
 - Move left: `Left Joystick Left` or `D-pad Left`
 - Move right: `Left Joystick Right` or `D-pad Right`
+- Start / restart game: `Start` (Sony: `Start`, Xbox: `Menu`, Nintendo `+`)
