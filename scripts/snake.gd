@@ -12,9 +12,9 @@ enum Direction {
 @onready var head: CharacterBody2D = $Head
 @onready var head_sprite: Sprite2D = $Head/Sprite
 @onready var bodies: Array[CharacterBody2D] = [$Body]
-@onready var bodySprites: Array[Sprite2D] = [$Body/Sprite]
+@onready var body_sprites: Array[Sprite2D] = [$Body/Sprite]
 @onready var tail: CharacterBody2D = $Tail
-@onready var tailSprite: Sprite2D = $Tail/Sprite
+@onready var tail_sprite: Sprite2D = $Tail/Sprite
 
 
 var _last_direction := Direction.RIGHT
@@ -43,9 +43,34 @@ func _on_movement_timer_timeout() -> void:
 
 
 func _update_tail() -> void:
+	_rotate_tail()
+	_move_tail()
+
+
+func _rotate_tail() -> void:
+	var position_offset: Vector2 =  bodies.back().position - tail.position
+	_rotate(tail_sprite, _get_direction(position_offset))
+
+
+func _move_tail() -> void:
 	tail.position = bodies.back().position
 
+
 func _update_bodies() -> void:
+	_rotate_bodies()
+	_move_bodies()
+
+
+func _rotate_bodies() -> void:
+	var position_offset: Vector2 = head.position - bodies.front().position
+	_rotate(body_sprites.front(), _get_direction(position_offset))
+	
+	for i in range(1, bodies.size()):
+		position_offset = bodies[i - 1].position - bodies[i].position
+		_rotate(body_sprites[i], _get_direction(position_offset))
+
+
+func _move_bodies() -> void:
 	bodies.front().position = head.position
 	
 	for i in range(1, bodies.size()):
@@ -53,8 +78,12 @@ func _update_bodies() -> void:
 
 
 func _update_head() -> void:
-	_move_head()
 	_rotate_head()
+	_move_head()
+
+
+func _rotate_head() -> void:
+	_rotate(head_sprite, _current_direction)
 
 
 func _move_head() -> void:
@@ -74,17 +103,30 @@ func _move_head() -> void:
 	_last_direction = _current_direction
 
 
-func _rotate_head() -> void:
-	match _current_direction:
+func _get_direction(position_offset: Vector2) -> Direction:
+	if (position_offset.x < 0):
+		return Direction.LEFT
+	elif (position_offset.x > 0):
+		return Direction.RIGHT
+	elif (position_offset.y < 0):
+		return Direction.UP
+	elif (position_offset.y > 0):
+		return Direction.DOWN
+	
+	return Direction.RIGHT
+
+
+func _rotate(sprite: Sprite2D, direction: Direction) -> void:
+	match direction:
 		Direction.UP:
-			head_sprite.flip_h = false
-			head_sprite.rotation_degrees = -90
+			sprite.flip_h = false
+			sprite.rotation_degrees = -90
 		Direction.DOWN:
-			head_sprite.flip_h = false
-			head_sprite.rotation_degrees = 90
+			sprite.flip_h = false
+			sprite.rotation_degrees = 90
 		Direction.LEFT:
-			head_sprite.flip_h = true
-			head_sprite.rotation_degrees = 0
+			sprite.flip_h = true
+			sprite.rotation_degrees = 0
 		Direction.RIGHT:
-			head_sprite.flip_h = false
-			head_sprite.rotation_degrees = 0
+			sprite.flip_h = false
+			sprite.rotation_degrees = 0
