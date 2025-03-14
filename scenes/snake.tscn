@@ -16,9 +16,10 @@ radius = 16.0
 script = ExtResource("1_yc36x")
 
 [node name="Head" type="CharacterBody2D" parent="."]
+position = Vector2(32, 0)
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
-position = Vector2(32, 0)
 texture = ExtResource("1_a5f6l")
 hframes = 3
 frame = 2
@@ -27,6 +28,7 @@ frame = 2
 shape = SubResource("CircleShape2D_a5f6l")
 
 [node name="Body" type="CharacterBody2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_a5f6l")
@@ -34,18 +36,17 @@ hframes = 3
 frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="Body"]
-position = Vector2(-32, 0)
 shape = SubResource("CircleShape2D_yc36x")
 
 [node name="Tail" type="CharacterBody2D" parent="."]
+position = Vector2(-32, 0)
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Tail"]
-position = Vector2(-32, 0)
 texture = ExtResource("1_a5f6l")
 hframes = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="Tail"]
-position = Vector2(32, 0)
 shape = SubResource("CircleShape2D_auphx")
 
 [node name="MovementTimer" type="Timer" parent="."]
