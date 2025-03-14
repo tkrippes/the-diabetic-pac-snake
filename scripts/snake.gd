@@ -99,7 +99,11 @@ func _move_head() -> void:
 		Direction.RIGHT:
 			position_offset = Vector2(tile_size, 0)
 	
-	head.position += position_offset
+	var collision := head.move_and_collide(position_offset)
+	if (collision):
+		if (collision.get_collider() is Walls):
+			queue_free()
+		
 	_last_direction = _current_direction
 
 
