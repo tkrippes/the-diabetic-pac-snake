@@ -101,7 +101,7 @@ func _move_head() -> void:
 	
 	var collision := head.move_and_collide(position_offset)
 	if (collision):
-		if (collision.get_collider() is Walls):
+		if (collision.get_collider() as Node).is_in_group("walls"):
 			queue_free()
 		
 	_last_direction = _current_direction
