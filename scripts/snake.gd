@@ -62,8 +62,8 @@ func _update_bodies() -> void:
 
 
 func _rotate_bodies() -> void:
-	var position_offset: Vector2 = head.position - bodies.front().position
-	_rotate(body_sprites.front(), _get_direction(position_offset))
+	var position_offset: Vector2 = head.position - bodies[0].position
+	_rotate(body_sprites[0], _get_direction(position_offset))
 	
 	for i in range(1, bodies.size()):
 		position_offset = bodies[i - 1].position - bodies[i].position
