@@ -35,6 +35,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=960
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="/home/tkrippes/GameDevelopment/Godot/my_snake/records/record.avi"
+
 [global_group]
 
 walls=""

@@ -8,6 +8,9 @@ addons/
 # Exports
 export/
 
+# Records
+records/
+
 # IDE
 .vscode/
 .idea/
