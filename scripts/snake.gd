@@ -49,7 +49,7 @@ func _update_tail() -> void:
 
 func _rotate_tail() -> void:
 	var position_offset: Vector2 =  bodies.back().position - tail.position
-	_rotate(tail_sprite, _get_direction(position_offset))
+	_rotate(tail, tail_sprite, _get_direction(position_offset))
 
 
 func _move_tail() -> void:
@@ -63,11 +63,11 @@ func _update_bodies() -> void:
 
 func _rotate_bodies() -> void:
 	var position_offset: Vector2 = head.position - bodies[0].position
-	_rotate(body_sprites[0], _get_direction(position_offset))
+	_rotate(bodies[0], body_sprites[0], _get_direction(position_offset))
 	
 	for i in range(1, bodies.size()):
 		position_offset = bodies[i - 1].position - bodies[i].position
-		_rotate(body_sprites[i], _get_direction(position_offset))
+		_rotate(bodies[i], body_sprites[i], _get_direction(position_offset))
 
 
 func _move_bodies() -> void:
@@ -83,7 +83,7 @@ func _update_head() -> void:
 
 
 func _rotate_head() -> void:
-	_rotate(head_sprite, _current_direction)
+	_rotate(head, head_sprite, _current_direction)
 
 
 func _move_head() -> void:
@@ -116,17 +116,17 @@ func _get_direction(position_offset: Vector2) -> Direction:
 	return Direction.RIGHT
 
 
-func _rotate(sprite: Sprite2D, direction: Direction) -> void:
+func _rotate(character: CharacterBody2D, sprite: Sprite2D, direction: Direction) -> void:
 	match direction:
 		Direction.UP:
-			sprite.flip_h = false
-			sprite.rotation_degrees = -90
+			character.rotation_degrees = -90
+			sprite.flip_v = false
 		Direction.DOWN:
-			sprite.flip_h = false
-			sprite.rotation_degrees = 90
+			character.rotation_degrees = 90
+			sprite.flip_v = false
 		Direction.LEFT:
-			sprite.flip_h = true
-			sprite.rotation_degrees = 0
+			character.rotation_degrees = 180
+			sprite.flip_v = true
 		Direction.RIGHT:
-			sprite.flip_h = false
-			sprite.rotation_degrees = 0
+			character.rotation_degrees = 0
+			sprite.flip_v = false
