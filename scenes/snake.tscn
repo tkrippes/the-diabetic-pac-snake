@@ -15,7 +15,7 @@ radius = 15.0
 [node name="Snake" type="Node2D"]
 script = ExtResource("1_yc36x")
 
-[node name="Head" type="CharacterBody2D" parent="."]
+[node name="Head" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 position = Vector2(32, 0)
 metadata/_edit_group_ = true
 
@@ -27,7 +27,7 @@ frame = 2
 [node name="Hitbox" type="CollisionShape2D" parent="Head"]
 shape = SubResource("CircleShape2D_a5f6l")
 
-[node name="Body" type="CharacterBody2D" parent="."]
+[node name="Body" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
@@ -38,7 +38,7 @@ frame = 1
 [node name="Hitbox" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_yc36x")
 
-[node name="Tail" type="CharacterBody2D" parent="."]
+[node name="Tail" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 position = Vector2(-32, 0)
 metadata/_edit_group_ = true
 
