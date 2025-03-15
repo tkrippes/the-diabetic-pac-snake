@@ -27,6 +27,9 @@ var _head_initial_position: Vector2
 var _body_initial_position: Vector2
 var _tail_initial_position: Vector2
 
+var _last_head_position: Vector2
+var _last_body_position: Vector2
+
 var _last_direction := Direction.RIGHT
 var _current_direction := Direction.RIGHT
 
@@ -53,9 +56,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_movement_timer_timeout() -> void:
-	_update_tail()
-	_update_bodies()
 	_update_head()
+	_update_bodies()
+	_update_tail()
 	
 	
 func start() -> void:
@@ -72,53 +75,15 @@ func reset() -> void:
 	_reset_directions()
 	
 	
-func _update_tail() -> void:
-	_rotate_tail()
-	_move_tail()
-
-
-func _rotate_tail() -> void:
-	var position_offset: Vector2 =  bodies.back().position - tail.position
-	_rotate(tail, tail_sprite, _get_direction(position_offset))
-
-
-func _move_tail() -> void:
-	tail.position = bodies.back().position
-
-
-func _update_bodies() -> void:
-	_rotate_bodies()
-	_move_bodies()
-
-
-func _rotate_bodies() -> void:
-	var position_offset: Vector2 = head.position - bodies[0].position
-	_rotate(bodies[0], body_sprites[0], _get_direction(position_offset))
-	
-	for i in range(1, bodies.size()):
-		position_offset = bodies[i - 1].position - bodies[i].position
-		_rotate(bodies[i], body_sprites[i], _get_direction(position_offset))
-
-
-func _move_bodies() -> void:
-	bodies.front().position = head.position
-	
-	for i in range(1, bodies.size()):
-		bodies[i].position = bodies[i - 1].position
-
-
 func _update_head() -> void:
-	_rotate_head()
 	_move_head()
-
-
-func _rotate_head() -> void:
-	_rotate(head, head_sprite, _current_direction)
+	_rotate_head()
 
 
 func _move_head() -> void:
+	_last_head_position = head.position
 	var position_offset: Vector2
-	
+
 	match _current_direction:
 		Direction.UP:
 			position_offset = Vector2(0, -tile_size)
@@ -128,13 +93,54 @@ func _move_head() -> void:
 			position_offset = Vector2(-tile_size, 0)
 		Direction.RIGHT:
 			position_offset = Vector2(tile_size, 0)
-	
+
 	var collision := head.move_and_collide(position_offset)
 	if (collision):
 		if (collision.get_collider() as Node).is_in_group("walls"):
 			_die()
-		
+
 	_last_direction = _current_direction
+
+
+func _rotate_head() -> void:
+	_rotate(head, head_sprite, _current_direction)
+
+
+func _update_bodies() -> void:
+	_move_bodies()
+	_rotate_bodies()
+
+
+func _move_bodies() -> void:
+	_last_body_position = bodies[-1].position
+
+	bodies[0].position = _last_head_position
+
+	for i in range(1, bodies.size()):
+		bodies[i].position = bodies[i - 1].position
+
+
+func _rotate_bodies() -> void:
+	var position_offset: Vector2 = head.position - bodies[0].position
+	_rotate(bodies[0], body_sprites[0], _get_direction(position_offset))
+
+	for i in range(1, bodies.size()):
+		position_offset = bodies[i - 1].position - bodies[i].position
+		_rotate(bodies[i], body_sprites[i], _get_direction(position_offset))
+	
+	
+func _update_tail() -> void:
+	_move_tail()
+	_rotate_tail()
+
+
+func _move_tail() -> void:
+	tail.position = _last_body_position
+
+
+func _rotate_tail() -> void:
+	var position_offset: Vector2 =  bodies[-1].position - tail.position
+	_rotate(tail, tail_sprite, _get_direction(position_offset))
 
 
 func _get_direction(position_offset: Vector2) -> Direction:
