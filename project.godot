@@ -42,6 +42,8 @@ movie_writer/movie_file="/home/tkrippes/GameDevelopment/Godot/my_snake/records/r
 [global_group]
 
 walls=""
+fruits=""
+snake_parts=""
 
 [input]
 
