@@ -7,6 +7,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
+snake_scene = ExtResource("2_4wyf3")
 
 [node name="Arena" parent="." instance=ExtResource("1_rwgxs")]
 

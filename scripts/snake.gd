@@ -28,10 +28,12 @@ var _body_initial_position: Vector2
 var _tail_initial_position: Vector2
 
 var _last_head_position: Vector2
-var _last_body_position: Vector2
+var _last_body_positions: Array[Vector2]
 
 var _last_direction := Direction.RIGHT
 var _current_direction := Direction.RIGHT
+
+var _add_body := false
 
 
 func _ready() -> void:
@@ -75,6 +77,10 @@ func reset() -> void:
 	_reset_directions()
 	
 	
+func add_body() -> void:
+	_add_body = true
+	
+	
 func _update_head() -> void:
 	_move_head()
 	_rotate_head()
@@ -112,12 +118,25 @@ func _update_bodies() -> void:
 
 
 func _move_bodies() -> void:
-	_last_body_position = bodies[-1].position
+	_last_body_positions.clear()
+	_last_body_positions.append(bodies[0].position)
 
 	bodies[0].position = _last_head_position
 
 	for i in range(1, bodies.size()):
-		bodies[i].position = bodies[i - 1].position
+		_last_body_positions.append(bodies[i].position)
+		bodies[i].position = _last_body_positions[i - 1]
+		
+	if _add_body:
+		# TODO: refactor this code
+		var new_body: CharacterBody2D = bodies[-1].duplicate() as CharacterBody2D
+		var new_body_sprite: Sprite2D = body_sprites[-1].duplicate() as Sprite2D
+		new_body.position = _last_body_positions[-1]
+		bodies.append(new_body)
+		body_sprites.append(new_body_sprite)
+		add_child(new_body)
+		_last_body_positions.append(tail.position)
+		_add_body = false
 
 
 func _rotate_bodies() -> void:
@@ -135,7 +154,7 @@ func _update_tail() -> void:
 
 
 func _move_tail() -> void:
-	tail.position = _last_body_position
+	tail.position = _last_body_positions[-1]
 
 
 func _rotate_tail() -> void:
@@ -175,7 +194,7 @@ func _rotate(character: CharacterBody2D, sprite: Sprite2D, direction: Direction)
 func _die() -> void:
 	movement_timer.stop()
 	died.emit()
-	hide()
+	queue_free()
 
 
 func _reset_head() -> void:
@@ -185,6 +204,8 @@ func _reset_head() -> void:
 
 
 func _reset_bodies() -> void:
+	var _error_code := bodies.resize(1)
+	_error_code = body_sprites.resize(1)
 	bodies[0].position = _body_initial_position
 	bodies[0].rotation_degrees = 0
 	body_sprites[0].flip_v = false
