@@ -24,10 +24,14 @@ func _process(_delta: float) -> void:
 func _on_snake_died() -> void:
 	_state = GameState.GAME_OVER
 	user_interface.show_game_over_label()
+
+
+func _on_fruit_eaten() -> void:
+	_set_score(_score + 1)
 			
 			
 func _start_game() -> void:
-	_update_score(0)
+	_set_score(0)
 	_state = GameState.PLAYING
 	user_interface.show_score_label()
 	world.start_snake()
@@ -39,6 +43,6 @@ func _restart_game() -> void:
 	world.reset_snake()
 	
 	
-func _update_score(score: int) -> void:
+func _set_score(score: int) -> void:
 	_score = score
 	user_interface.update_score(_score)

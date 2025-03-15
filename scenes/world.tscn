@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1aefsrrunjab"]
+[gd_scene load_steps=5 format=3 uid="uid://d1aefsrrunjab"]
 
 [ext_resource type="Script" uid="uid://dus8anil2juab" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dvih3eix4tmwx" path="res://scenes/arena.tscn" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://cqqmj8c047o68" path="res://scenes/snake.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://vidnq8u5568r" path="res://scenes/fruits/banana.tscn" id="4_k0juu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -10,6 +11,11 @@ script = ExtResource("1_4wyf3")
 [node name="Arena" parent="." instance=ExtResource("1_rwgxs")]
 
 [node name="Snake" parent="." instance=ExtResource("2_4wyf3")]
+z_index = 1
 position = Vector2(80, 240)
 
+[node name="Banana" parent="." instance=ExtResource("4_k0juu")]
+position = Vector2(208, 240)
+
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]
+[connection signal="eaten" from="Banana" to="." method="_on_fruit_eaten"]

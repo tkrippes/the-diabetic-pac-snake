@@ -11,4 +11,5 @@ script = ExtResource("1_jyhfs")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_0wfyh")]
 
+[connection signal="fruit_eaten" from="World" to="." method="_on_fruit_eaten"]
 [connection signal="snake_died" from="World" to="." method="_on_snake_died"]
