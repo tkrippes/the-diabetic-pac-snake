@@ -7,6 +7,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
+fruit_scene = ExtResource("4_k0juu")
 
 [node name="Arena" parent="." instance=ExtResource("1_rwgxs")]
 
@@ -14,8 +15,12 @@ script = ExtResource("1_4wyf3")
 z_index = 1
 position = Vector2(80, 240)
 
-[node name="Banana" parent="." instance=ExtResource("4_k0juu")]
+[node name="Banana1" parent="." instance=ExtResource("4_k0juu")]
 position = Vector2(208, 240)
 
+[node name="Banana2" parent="." instance=ExtResource("4_k0juu")]
+position = Vector2(272, 240)
+
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]
-[connection signal="eaten" from="Banana" to="." method="_on_fruit_eaten"]
+[connection signal="eaten" from="Banana1" to="." method="_on_fruit_eaten"]
+[connection signal="eaten" from="Banana2" to="." method="_on_fruit_eaten"]
