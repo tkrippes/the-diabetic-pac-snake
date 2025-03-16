@@ -1,4 +1,4 @@
 class_name SnakeTail
-extends CharacterBody2D
+extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite

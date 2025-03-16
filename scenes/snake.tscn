@@ -43,7 +43,7 @@ frame = 1
 [node name="Hitbox" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_yc36x")
 
-[node name="Tail" type="CharacterBody2D" parent="." groups=["snake_parts"]]
+[node name="Tail" type="Area2D" parent="." groups=["snake_parts"]]
 position = Vector2(-32, 0)
 script = ExtResource("5_oj63r")
 metadata/_edit_group_ = true

@@ -97,7 +97,10 @@ func _move_head() -> void:
 
 	var collision := head.move_and_collide(position_offset)
 	if (collision):
-		if (collision.get_collider() as Node).is_in_group("walls"):
+		var collider: Node = collision.get_collider()
+		if collider.is_in_group("walls"):
+			_die()
+		elif collider.is_in_group("snake_parts"):
 			_die()
 
 	_last_direction = _current_direction
@@ -173,7 +176,7 @@ func _get_direction(position_offset: Vector2) -> Direction:
 	return Direction.RIGHT
 
 
-func _rotate(character: CharacterBody2D, sprite: Sprite2D, direction: Direction) -> void:
+func _rotate(character: CollisionObject2D, sprite: Sprite2D, direction: Direction) -> void:
 	match direction:
 		Direction.UP:
 			character.rotation_degrees = -90
