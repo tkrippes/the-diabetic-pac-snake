@@ -12,20 +12,23 @@ enum Direction {
 
 @export var tile_size: int = 32
 
+# TODO: combine these two
 @onready var head: CharacterBody2D = $Head
 @onready var head_sprite: Sprite2D = $Head/Sprite
 
+# TODO: combine these two
 @onready var bodies: Array[CharacterBody2D] = [$Body]
 @onready var body_sprites: Array[Sprite2D] = [$Body/Sprite]
 
+# TODO: combine these two
 @onready var tail: CharacterBody2D = $Tail
 @onready var tail_sprite: Sprite2D = $Tail/Sprite
 
 @onready var movement_timer: Timer = $MovementTimer
 
-var _head_initial_position: Vector2
-var _body_initial_position: Vector2
-var _tail_initial_position: Vector2
+var _initial_head_position: Vector2
+var _initial_body_position: Vector2
+var _initial_tail_position: Vector2
 
 var _last_head_position: Vector2
 var _last_body_positions: Array[Vector2]
@@ -37,9 +40,9 @@ var _add_body := false
 
 
 func _ready() -> void:
-	_head_initial_position = head.position
-	_body_initial_position = bodies[0].position
-	_tail_initial_position = tail.position
+	_initial_head_position = head.position
+	_initial_body_position = bodies[0].position
+	_initial_tail_position = tail.position
 
 
 func _process(_delta: float) -> void:
@@ -128,7 +131,7 @@ func _move_bodies() -> void:
 		bodies[i].position = _last_body_positions[i - 1]
 		
 	if _add_body:
-		# TODO: refactor this code
+		# TODO: refactor this code, own function
 		var new_body: CharacterBody2D = bodies[-1].duplicate() as CharacterBody2D
 		var new_body_sprite: Sprite2D = body_sprites[-1].duplicate() as Sprite2D
 		new_body.position = _last_body_positions[-1]
@@ -194,25 +197,29 @@ func _rotate(character: CharacterBody2D, sprite: Sprite2D, direction: Direction)
 func _die() -> void:
 	movement_timer.stop()
 	died.emit()
-	queue_free()
+	hide()
 
 
 func _reset_head() -> void:
-	head.position = _head_initial_position
+	head.position = _initial_head_position
 	head.rotation_degrees = 0
 	head_sprite.flip_v = false
 
 
 func _reset_bodies() -> void:
+	for i in range(1, bodies.size()):
+		bodies[i].queue_free()
+		body_sprites[i].queue_free()
+		
 	var _error_code := bodies.resize(1)
 	_error_code = body_sprites.resize(1)
-	bodies[0].position = _body_initial_position
+	bodies[0].position = _initial_body_position
 	bodies[0].rotation_degrees = 0
 	body_sprites[0].flip_v = false
 
 
 func _reset_tail() -> void:
-	tail.position = _tail_initial_position
+	tail.position = _initial_tail_position
 	tail.rotation_degrees = 0
 	tail_sprite.flip_v = false
 
