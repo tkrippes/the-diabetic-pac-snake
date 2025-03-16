@@ -12,17 +12,9 @@ enum Direction {
 
 @export var tile_size: int = 32
 
-# TODO: combine these two
-@onready var head: CharacterBody2D = $Head
-@onready var head_sprite: Sprite2D = $Head/Sprite
-
-# TODO: combine these two
-@onready var bodies: Array[CharacterBody2D] = [$Body]
-@onready var body_sprites: Array[Sprite2D] = [$Body/Sprite]
-
-# TODO: combine these two
-@onready var tail: CharacterBody2D = $Tail
-@onready var tail_sprite: Sprite2D = $Tail/Sprite
+@onready var head: SnakeHead = $Head
+@onready var bodies: Array[SnakeBody] = [$Body]
+@onready var tail: SnakeTail = $Tail
 
 @onready var movement_timer: Timer = $MovementTimer
 
@@ -112,7 +104,7 @@ func _move_head() -> void:
 
 
 func _rotate_head() -> void:
-	_rotate(head, head_sprite, _current_direction)
+	_rotate(head, head.sprite, _current_direction)
 
 
 func _update_bodies() -> void:
@@ -132,11 +124,9 @@ func _move_bodies() -> void:
 		
 	if _add_body:
 		# TODO: refactor this code, own function
-		var new_body: CharacterBody2D = bodies[-1].duplicate() as CharacterBody2D
-		var new_body_sprite: Sprite2D = body_sprites[-1].duplicate() as Sprite2D
+		var new_body: SnakeBody = bodies[-1].duplicate() as SnakeBody
 		new_body.position = _last_body_positions[-1]
 		bodies.append(new_body)
-		body_sprites.append(new_body_sprite)
 		add_child(new_body)
 		_last_body_positions.append(tail.position)
 		_add_body = false
@@ -144,11 +134,11 @@ func _move_bodies() -> void:
 
 func _rotate_bodies() -> void:
 	var position_offset: Vector2 = head.position - bodies[0].position
-	_rotate(bodies[0], body_sprites[0], _get_direction(position_offset))
+	_rotate(bodies[0], bodies[0].sprite, _get_direction(position_offset))
 
 	for i in range(1, bodies.size()):
 		position_offset = bodies[i - 1].position - bodies[i].position
-		_rotate(bodies[i], body_sprites[i], _get_direction(position_offset))
+		_rotate(bodies[i], bodies[i].sprite, _get_direction(position_offset))
 	
 	
 func _update_tail() -> void:
@@ -162,7 +152,7 @@ func _move_tail() -> void:
 
 func _rotate_tail() -> void:
 	var position_offset: Vector2 =  bodies[-1].position - tail.position
-	_rotate(tail, tail_sprite, _get_direction(position_offset))
+	_rotate(tail, tail.sprite, _get_direction(position_offset))
 
 
 func _get_direction(position_offset: Vector2) -> Direction:
@@ -203,25 +193,23 @@ func _die() -> void:
 func _reset_head() -> void:
 	head.position = _initial_head_position
 	head.rotation_degrees = 0
-	head_sprite.flip_v = false
+	head.sprite.flip_v = false
 
 
 func _reset_bodies() -> void:
 	for i in range(1, bodies.size()):
 		bodies[i].queue_free()
-		body_sprites[i].queue_free()
 		
 	var _error_code := bodies.resize(1)
-	_error_code = body_sprites.resize(1)
 	bodies[0].position = _initial_body_position
 	bodies[0].rotation_degrees = 0
-	body_sprites[0].flip_v = false
+	bodies[0].sprite.flip_v = false
 
 
 func _reset_tail() -> void:
 	tail.position = _initial_tail_position
 	tail.rotation_degrees = 0
-	tail_sprite.flip_v = false
+	tail.sprite.flip_v = false
 
 
 func _reset_directions() -> void:

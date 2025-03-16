@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqqmj8c047o68"]
+[gd_scene load_steps=9 format=3 uid="uid://cqqmj8c047o68"]
 
 [ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/Snake.png" id="1_a5f6l"]
 [ext_resource type="Script" uid="uid://5i76i7ydsii7" path="res://scripts/snake.gd" id="1_yc36x"]
+[ext_resource type="Script" uid="uid://bne08ghlc53yw" path="res://scripts/snake/snake_head.gd" id="2_4j5f3"]
+[ext_resource type="Script" uid="uid://dbg7r34ftxd58" path="res://scripts/snake/snake_body.gd" id="4_1p8c4"]
+[ext_resource type="Script" uid="uid://cdyqqco1kojop" path="res://scripts/snake/snake_tail.gd" id="5_oj63r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5f6l"]
 radius = 15.0
@@ -17,6 +20,7 @@ script = ExtResource("1_yc36x")
 
 [node name="Head" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 position = Vector2(32, 0)
+script = ExtResource("2_4j5f3")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
@@ -28,6 +32,7 @@ frame = 2
 shape = SubResource("CircleShape2D_a5f6l")
 
 [node name="Body" type="CharacterBody2D" parent="." groups=["snake_parts"]]
+script = ExtResource("4_1p8c4")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
@@ -40,6 +45,7 @@ shape = SubResource("CircleShape2D_yc36x")
 
 [node name="Tail" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 position = Vector2(-32, 0)
+script = ExtResource("5_oj63r")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Tail"]
