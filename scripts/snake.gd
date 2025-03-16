@@ -28,7 +28,7 @@ var _last_body_positions: Array[Vector2]
 var _last_direction := Direction.RIGHT
 var _current_direction := Direction.RIGHT
 
-var _add_body := false
+var _queue_add_body := false
 
 
 func _ready() -> void:
@@ -73,7 +73,7 @@ func reset() -> void:
 	
 	
 func add_body() -> void:
-	_add_body = true
+	_queue_add_body = true
 	
 	
 func _update_head() -> void:
@@ -122,14 +122,9 @@ func _move_bodies() -> void:
 		_last_body_positions.append(bodies[i].position)
 		bodies[i].position = _last_body_positions[i - 1]
 		
-	if _add_body:
-		# TODO: refactor this code, own function
-		var new_body: SnakeBody = bodies[-1].duplicate() as SnakeBody
-		new_body.position = _last_body_positions[-1]
-		bodies.append(new_body)
-		add_child(new_body)
-		_last_body_positions.append(tail.position)
-		_add_body = false
+	if _queue_add_body:
+		_add_body()
+		
 
 
 func _rotate_bodies() -> void:
@@ -139,6 +134,16 @@ func _rotate_bodies() -> void:
 	for i in range(1, bodies.size()):
 		position_offset = bodies[i - 1].position - bodies[i].position
 		_rotate(bodies[i], bodies[i].sprite, _get_direction(position_offset))
+	
+	
+func _add_body() -> void:
+	var new_body: SnakeBody = bodies[-1].duplicate() as SnakeBody
+	new_body.position = _last_body_positions[-1]
+	bodies.append(new_body)
+	add_child(new_body)
+	
+	_last_body_positions.append(tail.position)
+	_queue_add_body = false
 	
 	
 func _update_tail() -> void:
