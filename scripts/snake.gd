@@ -18,8 +18,9 @@ enum Direction {
 @onready var bodies: Array[SnakeBody] = [$Body]
 @onready var tail: SnakeTail = $Tail
 
-@onready var eat_fruit_sound: AudioStreamPlayer = $EatFruitSound
-@onready var squish_snake_sound: AudioStreamPlayer = $SquishSnakeSound
+@onready var fruit_eating_sound: AudioStreamPlayer = $FruitEatingSound
+@onready var snake_squished_sound: AudioStreamPlayer = $SnakeSquishedSound
+@onready var snake_suffocating_sound: AudioStreamPlayer = $SnakeSuffocatingSound
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
@@ -107,13 +108,16 @@ func _move_head() -> void:
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
 		if collider.is_in_group("walls"):
-			squish_snake_sound.play()
+			snake_squished_sound.play()
 			_die()
-		elif collider.is_in_group("snake_parts") or collider.is_in_group("sweets"):
+		elif collider.is_in_group("snake_parts"):
+			_die()
+		elif collider.is_in_group("sweets"):
+			snake_suffocating_sound.play()
 			_die()
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
-			eat_fruit_sound.play()
+			fruit_eating_sound.play()
 			collider.queue_free()
 			head.sprite.frame = 3
 			ate_fruit.emit()

@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqqmj8c047o68"]
+[gd_scene load_steps=12 format=3 uid="uid://cqqmj8c047o68"]
 
 [ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/Snake.png" id="1_a5f6l"]
 [ext_resource type="Script" uid="uid://5i76i7ydsii7" path="res://scripts/snake.gd" id="1_yc36x"]
 [ext_resource type="Script" uid="uid://bne08ghlc53yw" path="res://scripts/snake/snake_head.gd" id="2_4j5f3"]
 [ext_resource type="Script" uid="uid://dbg7r34ftxd58" path="res://scripts/snake/snake_body.gd" id="4_1p8c4"]
 [ext_resource type="Script" uid="uid://cdyqqco1kojop" path="res://scripts/snake/snake_tail.gd" id="5_oj63r"]
-[ext_resource type="AudioStream" uid="uid://cehkeyggdpqcp" path="res://assets/audio/eat_fruit.mp3" id="6_1p8c4"]
-[ext_resource type="AudioStream" uid="uid://bb62q4sufy5ic" path="res://assets/audio/squish_snake.mp3" id="7_oj63r"]
+[ext_resource type="AudioStream" uid="uid://cehkeyggdpqcp" path="res://assets/audio/fruit_eating.mp3" id="6_1p8c4"]
+[ext_resource type="AudioStream" uid="uid://bb62q4sufy5ic" path="res://assets/audio/snake_squished.mp3" id="7_oj63r"]
+[ext_resource type="AudioStream" uid="uid://cnyyqya5i3tyj" path="res://assets/audio/snake_suffocating.mp3" id="8_f07f3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5f6l"]
 radius = 15.0
@@ -62,10 +63,14 @@ hframes = 4
 [node name="Hitbox" type="CollisionShape2D" parent="Tail"]
 shape = SubResource("CircleShape2D_auphx")
 
-[node name="EatFruitSound" type="AudioStreamPlayer" parent="."]
+[node name="FruitEatingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1p8c4")
 volume_db = 5.0
 
-[node name="SquishSnakeSound" type="AudioStreamPlayer" parent="."]
+[node name="SnakeSquishedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_oj63r")
 volume_db = -5.0
+
+[node name="SnakeSuffocatingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_f07f3")
+volume_db = 10.0
