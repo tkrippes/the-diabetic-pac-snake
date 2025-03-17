@@ -23,3 +23,9 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 - Move left: `Left Joystick Left` or `D-pad Left`
 - Move right: `Left Joystick Right` or `D-pad Right`
 - Start / restart game: `Start` (Sony: `Start`, Xbox: `Menu`, Nintendo `+`)
+
+## Credits
+
+### Audio
+
+- Fruit eating sound: [Eating apple](https://pixabay.com/sound-effects/eating-apple-6928/) by [niwki (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
