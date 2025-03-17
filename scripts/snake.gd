@@ -1,6 +1,7 @@
 class_name Snake
 extends Node2D
 
+signal ate_fruit
 signal died
 
 enum Direction {
@@ -79,13 +80,9 @@ func reset() -> void:
 	_reset_directions()
 	
 	
-func add_body() -> void:
-	_add_body_on_next_move = true
-	
-	
 func _update_head() -> void:
-	_move_head()
 	_rotate_head()
+	_move_head()
 
 
 func _move_head() -> void:
@@ -101,14 +98,20 @@ func _move_head() -> void:
 			position_offset = Vector2(-tile_size, 0)
 		Direction.RIGHT:
 			position_offset = Vector2(tile_size, 0)
-
-	var collision := head.move_and_collide(position_offset)
-	if (collision):
-		var collider: Node = collision.get_collider()
-		if collider.is_in_group("walls"):
+	
+	# NOTE: needed to take into account recent snake head rotation
+	head.collision_detector.force_raycast_update()
+	if head.collision_detector.is_colliding():
+		var collider: Node = head.collision_detector.get_collider()
+		if collider.is_in_group("walls") or collider.is_in_group("snake_parts"):
 			_die()
-		elif collider.is_in_group("snake_parts"):
-			_die()
+		elif collider.is_in_group("fruits"):
+			_add_body_on_next_move = true
+			collider.queue_free()
+			ate_fruit.emit()
+	
+	# NOTE: collision already detected with collision detector of snake head
+	var _collision := head.move_and_collide(position_offset)
 
 	_last_direction = _current_direction
 
@@ -152,6 +155,7 @@ func _add_body() -> void:
 	bodies.append(new_body)
 	add_child(new_body)
 	
+	# INFO: set last body position so that tail does not move
 	_last_body_positions.append(tail.position)
 	_add_body_on_next_move = false
 	

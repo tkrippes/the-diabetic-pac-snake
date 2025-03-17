@@ -31,6 +31,11 @@ frame = 2
 [node name="Hitbox" type="CollisionShape2D" parent="Head"]
 shape = SubResource("CircleShape2D_a5f6l")
 
+[node name="CollisionDetector" type="RayCast2D" parent="Head"]
+position = Vector2(15, 0)
+target_position = Vector2(32, 0)
+collide_with_areas = true
+
 [node name="Body" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 script = ExtResource("4_1p8c4")
 metadata/_edit_group_ = true
@@ -43,7 +48,7 @@ frame = 1
 [node name="Hitbox" type="CollisionShape2D" parent="Body"]
 shape = SubResource("CircleShape2D_yc36x")
 
-[node name="Tail" type="Area2D" parent="." groups=["snake_parts"]]
+[node name="Tail" type="Area2D" parent="."]
 position = Vector2(-32, 0)
 script = ExtResource("5_oj63r")
 metadata/_edit_group_ = true

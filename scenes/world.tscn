@@ -21,6 +21,5 @@ position = Vector2(208, 240)
 [node name="Banana2" parent="." instance=ExtResource("4_k0juu")]
 position = Vector2(272, 240)
 
+[connection signal="ate_fruit" from="Snake" to="." method="_on_snake_ate_fruit"]
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]
-[connection signal="eaten" from="Banana1" to="." method="_on_fruit_eaten"]
-[connection signal="eaten" from="Banana2" to="." method="_on_fruit_eaten"]

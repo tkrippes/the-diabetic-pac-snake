@@ -21,13 +21,13 @@ func _process(_delta: float) -> void:
 			_restart_game()
 	
 			
+func _on_snake_ate_fruit() -> void:
+	_set_score(_score + 1)
+	
+			
 func _on_snake_died() -> void:
 	_state = GameState.GAME_OVER
 	user_interface.show_game_over_label()
-
-
-func _on_fruit_eaten() -> void:
-	_set_score(_score + 1)
 			
 			
 func _start_game() -> void:
