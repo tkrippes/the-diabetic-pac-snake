@@ -2,7 +2,9 @@
 A [snake](https://en.wikipedia.org/wiki/Snake_(1998_video_game)) clone created in the Godot game engine.
 
 ## Description
-Snake is a single player game. You are playing as a snake who needs to eat fruits in order to grow. For every fruit you eat you grow by one in size and one point. But beware of the enemies, eating one of these will cause the snake to die. Furthermore, the snake will also die by trying to eat the wall or itself.
+Snake is a single player game. You are playing as a snake who needs to eat fruits in order to grow. For every fruit you
+eat you grow by one in size and gain one point. But beware of the sweets, eating one of those will cause the snake to 
+die from diabetes. The snake will also die by trying to eat the wall or itself.
 
 ## Controls
 
