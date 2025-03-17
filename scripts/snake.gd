@@ -18,6 +18,8 @@ enum Direction {
 @onready var bodies: Array[SnakeBody] = [$Body]
 @onready var tail: SnakeTail = $Tail
 
+@onready var eat_fruit_sound: AudioStreamPlayer = $EatFruitSound
+
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
 var _initial_tail_position: Vector2
@@ -107,6 +109,7 @@ func _move_head() -> void:
 			_die()
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
+			eat_fruit_sound.play()
 			collider.queue_free()
 			head.sprite.frame = 3
 			ate_fruit.emit()
