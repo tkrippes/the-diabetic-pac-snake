@@ -103,7 +103,7 @@ func _move_head() -> void:
 	head.collision_detector.force_raycast_update()
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
-		if collider.is_in_group("walls") or collider.is_in_group("snake_parts"):
+		if collider.is_in_group("walls") or collider.is_in_group("snake_parts") or collider.is_in_group("sweets"):
 			_die()
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
