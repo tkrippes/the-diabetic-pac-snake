@@ -21,6 +21,7 @@ enum Direction {
 @onready var fruit_eating_sound: AudioStreamPlayer = $FruitEatingSound
 @onready var snake_squished_sound: AudioStreamPlayer = $SnakeSquishedSound
 @onready var snake_suffocating_sound: AudioStreamPlayer = $SnakeSuffocatingSound
+@onready var snake_sucked_in_sound: AudioStreamPlayer = $SnakeSuckedInSound
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
@@ -111,6 +112,7 @@ func _move_head() -> void:
 			snake_squished_sound.play()
 			_die()
 		elif collider.is_in_group("snake_parts"):
+			snake_sucked_in_sound.play()
 			_die()
 		elif collider.is_in_group("sweets"):
 			snake_suffocating_sound.play()
