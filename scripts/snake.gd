@@ -108,7 +108,10 @@ func _move_head() -> void:
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
 			collider.queue_free()
+			head.sprite.frame = 3
 			ate_fruit.emit()
+	else:
+		head.sprite.frame = 2
 	
 	# NOTE: collision already detected with collision detector of snake head
 	var _collision := head.move_and_collide(position_offset)

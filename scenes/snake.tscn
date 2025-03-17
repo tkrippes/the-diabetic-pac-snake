@@ -25,7 +25,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
 texture = ExtResource("1_a5f6l")
-hframes = 3
+hframes = 4
 frame = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Head"]
@@ -42,7 +42,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 texture = ExtResource("1_a5f6l")
-hframes = 3
+hframes = 4
 frame = 1
 
 [node name="Hitbox" type="CollisionShape2D" parent="Body"]
@@ -55,7 +55,7 @@ metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Tail"]
 texture = ExtResource("1_a5f6l")
-hframes = 3
+hframes = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="Tail"]
 shape = SubResource("CircleShape2D_auphx")
