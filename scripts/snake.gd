@@ -19,6 +19,7 @@ enum Direction {
 @onready var tail: SnakeTail = $Tail
 
 @onready var eat_fruit_sound: AudioStreamPlayer = $EatFruitSound
+@onready var squish_snake_sound: AudioStreamPlayer = $SquishSnakeSound
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
@@ -105,7 +106,10 @@ func _move_head() -> void:
 	head.collision_detector.force_raycast_update()
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
-		if collider.is_in_group("walls") or collider.is_in_group("snake_parts") or collider.is_in_group("sweets"):
+		if collider.is_in_group("walls"):
+			squish_snake_sound.play()
+			_die()
+		elif collider.is_in_group("snake_parts") or collider.is_in_group("sweets"):
 			_die()
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
