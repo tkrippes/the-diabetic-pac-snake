@@ -29,3 +29,4 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 ### Audio
 
 - Fruit eating sound: [Eating apple](https://pixabay.com/sound-effects/eating-apple-6928/) by [niwki (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
+- Snake squished sound: [Slime Squish 4](https://pixabay.com/sound-effects/slime-squish-4-218568/) by [floraphonic](https://pixabay.com/users/floraphonic-38928062/)
