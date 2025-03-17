@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://5vg4g1bbnlt4"]
+
+[node name="Sweet" type="Area2D" groups=["sweets"]]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]

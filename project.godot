@@ -43,6 +43,7 @@ movie_writer/movie_file="/home/tkrippes/GameDevelopment/Godot/my_snake/records/r
 
 walls=""
 fruits=""
+sweets=""
 
 [input]
 

@@ -42,6 +42,7 @@ func _restart_game() -> void:
 	user_interface.show_start_label()
 	world.reset_snake()
 	world.reset_fruits()
+	world.reset_sweets()
 	
 	
 func _set_score(score: int) -> void:
