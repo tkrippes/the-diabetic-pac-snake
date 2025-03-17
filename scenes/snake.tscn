@@ -54,8 +54,3 @@ hframes = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="Tail"]
 shape = SubResource("CircleShape2D_auphx")
-
-[node name="MovementTimer" type="Timer" parent="."]
-wait_time = 0.25
-
-[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

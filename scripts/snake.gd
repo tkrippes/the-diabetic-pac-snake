@@ -10,13 +10,12 @@ enum Direction {
 	RIGHT,
 }
 
+@export var movement_timeout: float = 0.25
 @export var tile_size: int = 32
 
 @onready var head: SnakeHead = $Head
 @onready var bodies: Array[SnakeBody] = [$Body]
 @onready var tail: SnakeTail = $Tail
-
-@onready var movement_timer: Timer = $MovementTimer
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
@@ -28,7 +27,9 @@ var _last_body_positions: Array[Vector2]
 var _last_direction := Direction.RIGHT
 var _current_direction := Direction.RIGHT
 
-var _queue_add_body := false
+var _move                  := false
+var _elapsed_movement_time := 0.0
+var _add_body_on_next_move := false
 
 
 func _ready() -> void:
@@ -52,14 +53,20 @@ func _process(_delta: float) -> void:
 			_current_direction = Direction.RIGHT
 
 
-func _on_movement_timer_timeout() -> void:
-	_update_head()
-	_update_bodies()
-	_update_tail()
+func _physics_process(delta: float) -> void:
+	if _move:
+		_elapsed_movement_time += delta
+		
+		if _elapsed_movement_time >= movement_timeout:
+			_elapsed_movement_time = 0.0
+			
+			_update_head()
+			_update_bodies()
+			_update_tail()
 	
 	
 func start() -> void:
-	movement_timer.start()
+	_move = true
 	
 	
 func reset() -> void:
@@ -73,7 +80,7 @@ func reset() -> void:
 	
 	
 func add_body() -> void:
-	_queue_add_body = true
+	_add_body_on_next_move = true
 	
 	
 func _update_head() -> void:
@@ -125,7 +132,7 @@ func _move_bodies() -> void:
 		_last_body_positions.append(bodies[i].position)
 		bodies[i].position = _last_body_positions[i - 1]
 		
-	if _queue_add_body:
+	if _add_body_on_next_move:
 		_add_body()
 		
 
@@ -146,7 +153,7 @@ func _add_body() -> void:
 	add_child(new_body)
 	
 	_last_body_positions.append(tail.position)
-	_queue_add_body = false
+	_add_body_on_next_move = false
 	
 	
 func _update_tail() -> void:
@@ -193,7 +200,10 @@ func _rotate(character: CollisionObject2D, sprite: Sprite2D, direction: Directio
 
 	
 func _die() -> void:
-	movement_timer.stop()
+	_move = false
+	_elapsed_movement_time = 0.0
+	_add_body_on_next_move = false
+	
 	died.emit()
 	hide()
 
