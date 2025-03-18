@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dplfrg0sjcqyh"]
+
+[ext_resource type="Script" uid="uid://bne08ghlc53yw" path="res://scripts/snake/head.gd" id="1_k5rj1"]
+[ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/Snake.png" id="2_i8na8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5f6l"]
+radius = 15.0
+
+[node name="SnakeHead" type="CharacterBody2D" groups=["snake_parts"]]
+script = ExtResource("1_k5rj1")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_i8na8")
+hframes = 4
+frame = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a5f6l")
+
+[node name="CollisionDetector" type="RayCast2D" parent="."]
+position = Vector2(15, 0)
+target_position = Vector2(32, 0)
+collide_with_areas = true

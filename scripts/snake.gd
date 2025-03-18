@@ -14,10 +14,10 @@ enum Direction {
 @export var movement_timeout: float = 0.25
 @export var tile_size: int = 32
 
-@onready var head: SnakeHead = $SnakeHead
-@onready var bodies: Array[SnakeBody] = [$SnakeBody]
-@onready var tail: SnakeTail = $SnakeTail
-@onready var sound_controller: SnakeSoundController = $SnakeSoundController
+@onready var head: SnakeHead = $Head
+@onready var bodies: Array[SnakeBody] = [$Body]
+@onready var tail: SnakeTail = $Tail
+@onready var sound_controller: SnakeSoundController = $SoundController
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
