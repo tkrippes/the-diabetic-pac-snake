@@ -18,14 +18,15 @@ sweet_scene = ExtResource("5_71j4m")
 z_index = 1
 position = Vector2(80, 240)
 
-[node name="Candy1" parent="." instance=ExtResource("5_71j4m")]
-position = Vector2(400, 304)
-
-[node name="Candy2" parent="." instance=ExtResource("5_71j4m")]
-position = Vector2(336, 304)
-
-[node name="FruitController" parent="." instance=ExtResource("6_qfnet")]
+[node name="FruitsController" parent="." instance=ExtResource("6_qfnet")]
 scene = ExtResource("4_k0juu")
+spawn_timeout = 1.0
+despawn_timeout = 10.0
+
+[node name="SweetsController" parent="." instance=ExtResource("6_qfnet")]
+scene = ExtResource("5_71j4m")
+spawn_timeout = 5.0
+despawn_timeout = 5.0
 
 [connection signal="ate_fruit" from="Snake" to="." method="_on_snake_ate_fruit"]
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]

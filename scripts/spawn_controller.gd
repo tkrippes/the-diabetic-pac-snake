@@ -2,8 +2,8 @@ class_name SpawnController
 extends Node
 
 @export var scene: PackedScene
-@export var spawn_timeout: float = 3.0
-@export var despawn_timeout: float = 10.0
+@export var spawn_timeout: float
+@export var despawn_timeout: float
 
 @export var tile_size: int = 32
 @export var grid_min_position := Vector2i(1, 1)
