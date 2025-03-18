@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ivk845fngg8p"]
+[gd_scene load_steps=2 format=3 uid="uid://ivk845fngg8p"]
+
+[ext_resource type="Script" uid="uid://dxpohojyuchtq" path="res://scripts/fruits/fruit.gd" id="1_7xrwt"]
 
 [node name="Fruit" type="Area2D" groups=["fruits"]]
+script = ExtResource("1_7xrwt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 

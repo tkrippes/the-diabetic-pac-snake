@@ -9,42 +9,31 @@ signal snake_died
 
 @onready var snake: Snake = $Snake
 
-@onready var fruits: Array[Node2D] = [$Banana1, $Banana2]
-@onready var initial_fruit_positions: Array[Vector2] = [fruits[0].position, fruits[1].position]
+@onready var fruit_controller: FruitController = $FruitController
 
 @onready var sweets: Array[Node2D] = [$Candy1, $Candy2]
 @onready var initial_sweet_positions: Array[Vector2] = [sweets[0].position, sweets[1].position]
 
 
 func _on_snake_ate_fruit() -> void:
+	fruit_controller.reset_timer()
 	snake_ate_fruit.emit()
 
 
 func _on_snake_died() -> void:
-	get_tree().call_group("fruits", "queue_free")
 	get_tree().call_group("sweets", "queue_free")
 	snake_died.emit()
+	fruit_controller.stop()
 
 
 func start() -> void:
 	snake.start()
+	fruit_controller.start()
 	
 	
 func reset() -> void:
 	snake.reset()
-	reset_fruits()
 	reset_sweets()
-	
-	
-func reset_fruits() -> void:
-	fruits.clear()
-	
-	for i in range(initial_fruit_positions.size()):
-		var fruit: Node2D = fruit_scene.instantiate()
-		fruit.position = initial_fruit_positions[i]
-		
-		fruits.append(fruit)
-		add_child(fruit)
 
 		
 func reset_sweets() -> void:
