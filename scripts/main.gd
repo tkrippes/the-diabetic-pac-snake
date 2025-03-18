@@ -34,15 +34,13 @@ func _start_game() -> void:
 	_set_score(0)
 	_state = GameState.PLAYING
 	user_interface.show_score_label()
-	world.start_snake()
+	world.start()
 	
 
 func _restart_game() -> void:
 	_state = GameState.START
 	user_interface.show_start_label()
-	world.reset_snake()
-	world.reset_fruits()
-	world.reset_sweets()
+	world.reset()
 	
 	
 func _set_score(score: int) -> void:

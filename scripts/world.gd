@@ -24,14 +24,16 @@ func _on_snake_died() -> void:
 	get_tree().call_group("fruits", "queue_free")
 	get_tree().call_group("sweets", "queue_free")
 	snake_died.emit()
-	
 
-func start_snake() -> void:
+
+func start() -> void:
 	snake.start()
 	
 	
-func reset_snake() -> void:
+func reset() -> void:
 	snake.reset()
+	reset_fruits()
+	reset_sweets()
 	
 	
 func reset_fruits() -> void:
