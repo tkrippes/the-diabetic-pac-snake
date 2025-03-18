@@ -41,18 +41,19 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("move_up"):
-		if _last_direction != Direction.DOWN:
-			_current_direction = Direction.UP
-	elif Input.is_action_just_pressed("move_down"):
-		if _last_direction != Direction.UP:
-			_current_direction = Direction.DOWN
-	elif Input.is_action_just_pressed("move_left"):
-		if _last_direction != Direction.RIGHT:
-			_current_direction = Direction.LEFT
-	elif Input.is_action_just_pressed("move_right"):
-		if _last_direction != Direction.LEFT:
-			_current_direction = Direction.RIGHT
+	if _move:
+		if Input.is_action_just_pressed("move_up"):
+			if _last_direction != Direction.DOWN:
+				_current_direction = Direction.UP
+		elif Input.is_action_just_pressed("move_down"):
+			if _last_direction != Direction.UP:
+				_current_direction = Direction.DOWN
+		elif Input.is_action_just_pressed("move_left"):
+			if _last_direction != Direction.RIGHT:
+				_current_direction = Direction.LEFT
+		elif Input.is_action_just_pressed("move_right"):
+			if _last_direction != Direction.LEFT:
+				_current_direction = Direction.RIGHT
 
 
 func _physics_process(delta: float) -> void:
