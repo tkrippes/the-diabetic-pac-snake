@@ -9,7 +9,7 @@ signal snake_died
 
 @onready var snake: Snake = $Snake
 
-@onready var fruit_controller: FruitController = $FruitController
+@onready var fruit_controller: SpawnController = $FruitController
 
 @onready var sweets: Array[Node2D] = [$Candy1, $Candy2]
 @onready var initial_sweet_positions: Array[Vector2] = [sweets[0].position, sweets[1].position]

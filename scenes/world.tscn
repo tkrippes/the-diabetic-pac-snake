@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqqmj8c047o68" path="res://scenes/snake.tscn" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://vidnq8u5568r" path="res://scenes/fruits/banana.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b1wbwcah03bqv" path="res://scenes/sweets/candy.tscn" id="5_71j4m"]
-[ext_resource type="PackedScene" uid="uid://bovyxkf81qvic" path="res://scenes/fruits/fruit_controller.tscn" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://bovyxkf81qvic" path="res://scenes/spawn_controller.tscn" id="6_qfnet"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -25,7 +25,7 @@ position = Vector2(400, 304)
 position = Vector2(336, 304)
 
 [node name="FruitController" parent="." instance=ExtResource("6_qfnet")]
-fruit_scene = ExtResource("4_k0juu")
+scene = ExtResource("4_k0juu")
 
 [connection signal="ate_fruit" from="Snake" to="." method="_on_snake_ate_fruit"]
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]
