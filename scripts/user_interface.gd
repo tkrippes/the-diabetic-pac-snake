@@ -25,5 +25,5 @@ func update_score(score: int) -> void:
 	
 func show_game_over_label() -> void:
 	start_label.visible = false
-	score_label.visible = false
+	score_label.visible = true
 	game_over_label.visible = true
