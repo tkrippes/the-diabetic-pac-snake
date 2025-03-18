@@ -33,6 +33,9 @@ var _move                  := false
 var _elapsed_movement_time := 0.0
 var _add_body_on_next_move := false
 
+const MOUTH_OPENED_FRAME := 2
+const MOUTH_CLOSED_FRAME := 3
+
 
 func _ready() -> void:
 	_initial_head_position = head.position
@@ -118,10 +121,10 @@ func _move_head() -> void:
 			_add_body_on_next_move = true
 			sound_controller.play_fruit_eating_sound()
 			collider.queue_free()
-			head.sprite.frame = 3
+			head.sprite.frame = MOUTH_CLOSED_FRAME
 			ate_fruit.emit()
 	else:
-		head.sprite.frame = 2
+		head.sprite.frame = MOUTH_OPENED_FRAME
 	
 	# NOTE: collision already detected with collision detector of snake head
 	var _collision := head.move_and_collide(position_offset)
@@ -229,6 +232,7 @@ func _reset_head() -> void:
 	head.position = _initial_head_position
 	head.rotation_degrees = 0
 	head.sprite.flip_v = false
+	head.sprite.frame = MOUTH_OPENED_FRAME
 
 
 func _reset_bodies() -> void:
