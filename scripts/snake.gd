@@ -14,14 +14,10 @@ enum Direction {
 @export var movement_timeout: float = 0.25
 @export var tile_size: int = 32
 
-@onready var head: SnakeHead = $Head
-@onready var bodies: Array[SnakeBody] = [$Body]
-@onready var tail: SnakeTail = $Tail
-
-@onready var fruit_eating_sound: AudioStreamPlayer = $FruitEatingSound
-@onready var snake_squished_sound: AudioStreamPlayer = $SnakeSquishedSound
-@onready var snake_suffocating_sound: AudioStreamPlayer = $SnakeSuffocatingSound
-@onready var snake_sucked_in_sound: AudioStreamPlayer = $SnakeSuckedInSound
+@onready var head: SnakeHead = $SnakeHead
+@onready var bodies: Array[SnakeBody] = [$SnakeBody]
+@onready var tail: SnakeTail = $SnakeTail
+@onready var sound_controller: SnakeSoundController = $SnakeSoundController
 
 var _initial_head_position: Vector2
 var _initial_body_position: Vector2
@@ -109,17 +105,17 @@ func _move_head() -> void:
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
 		if collider.is_in_group("walls"):
-			snake_squished_sound.play()
+			sound_controller.play_death_by_walls_sound()
 			_die()
 		elif collider.is_in_group("snake_parts"):
-			snake_sucked_in_sound.play()
+			sound_controller.play_death_by_self_digestion_sound()
 			_die()
 		elif collider.is_in_group("sweets"):
-			snake_suffocating_sound.play()
+			sound_controller.play_death_by_sweets_sound()
 			_die()
 		elif collider.is_in_group("fruits"):
 			_add_body_on_next_move = true
-			fruit_eating_sound.play()
+			sound_controller.play_fruit_eating_sound()
 			collider.queue_free()
 			head.sprite.frame = 3
 			ate_fruit.emit()

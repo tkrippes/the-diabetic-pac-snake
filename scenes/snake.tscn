@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqqmj8c047o68"]
+[gd_scene load_steps=14 format=3 uid="uid://cqqmj8c047o68"]
 
 [ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/Snake.png" id="1_a5f6l"]
 [ext_resource type="Script" uid="uid://5i76i7ydsii7" path="res://scripts/snake.gd" id="1_yc36x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dbg7r34ftxd58" path="res://scripts/snake/snake_body.gd" id="4_1p8c4"]
 [ext_resource type="Script" uid="uid://cdyqqco1kojop" path="res://scripts/snake/snake_tail.gd" id="5_oj63r"]
 [ext_resource type="AudioStream" uid="uid://cehkeyggdpqcp" path="res://assets/audio/fruit_eating.mp3" id="6_1p8c4"]
+[ext_resource type="Script" uid="uid://bwkwffl3cikl" path="res://scripts/snake/snake_sound_controller.gd" id="6_uotcb"]
 [ext_resource type="AudioStream" uid="uid://bb62q4sufy5ic" path="res://assets/audio/snake_squished.mp3" id="7_oj63r"]
 [ext_resource type="AudioStream" uid="uid://cnyyqya5i3tyj" path="res://assets/audio/snake_suffocating.mp3" id="8_f07f3"]
 [ext_resource type="AudioStream" uid="uid://dw5mnbk1dws58" path="res://assets/audio/snaked_sucked_in.mp3" id="9_10gix"]
@@ -22,59 +23,62 @@ radius = 15.0
 [node name="Snake" type="Node2D"]
 script = ExtResource("1_yc36x")
 
-[node name="Head" type="CharacterBody2D" parent="." groups=["snake_parts"]]
+[node name="SnakeHead" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 position = Vector2(32, 0)
 script = ExtResource("2_4j5f3")
 metadata/_edit_group_ = true
 
-[node name="Sprite" type="Sprite2D" parent="Head"]
+[node name="Sprite" type="Sprite2D" parent="SnakeHead"]
 texture = ExtResource("1_a5f6l")
 hframes = 4
 frame = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Head"]
+[node name="Hitbox" type="CollisionShape2D" parent="SnakeHead"]
 shape = SubResource("CircleShape2D_a5f6l")
 
-[node name="CollisionDetector" type="RayCast2D" parent="Head"]
+[node name="CollisionDetector" type="RayCast2D" parent="SnakeHead"]
 position = Vector2(15, 0)
 target_position = Vector2(32, 0)
 collide_with_areas = true
 
-[node name="Body" type="CharacterBody2D" parent="." groups=["snake_parts"]]
+[node name="SnakeBody" type="CharacterBody2D" parent="." groups=["snake_parts"]]
 script = ExtResource("4_1p8c4")
 metadata/_edit_group_ = true
 
-[node name="Sprite" type="Sprite2D" parent="Body"]
+[node name="Sprite" type="Sprite2D" parent="SnakeBody"]
 texture = ExtResource("1_a5f6l")
 hframes = 4
 frame = 1
 
-[node name="Hitbox" type="CollisionShape2D" parent="Body"]
+[node name="Hitbox" type="CollisionShape2D" parent="SnakeBody"]
 shape = SubResource("CircleShape2D_yc36x")
 
-[node name="Tail" type="Area2D" parent="."]
+[node name="SnakeTail" type="Area2D" parent="."]
 position = Vector2(-32, 0)
 script = ExtResource("5_oj63r")
 metadata/_edit_group_ = true
 
-[node name="Sprite" type="Sprite2D" parent="Tail"]
+[node name="Sprite" type="Sprite2D" parent="SnakeTail"]
 texture = ExtResource("1_a5f6l")
 hframes = 4
 
-[node name="Hitbox" type="CollisionShape2D" parent="Tail"]
+[node name="Hitbox" type="CollisionShape2D" parent="SnakeTail"]
 shape = SubResource("CircleShape2D_auphx")
 
-[node name="FruitEatingSound" type="AudioStreamPlayer" parent="."]
+[node name="SnakeSoundController" type="Node" parent="."]
+script = ExtResource("6_uotcb")
+
+[node name="FruitEatingSound" type="AudioStreamPlayer" parent="SnakeSoundController"]
 stream = ExtResource("6_1p8c4")
 volume_db = 5.0
 
-[node name="SnakeSquishedSound" type="AudioStreamPlayer" parent="."]
+[node name="SnakeSquishedSound" type="AudioStreamPlayer" parent="SnakeSoundController"]
 stream = ExtResource("7_oj63r")
 volume_db = -5.0
 
-[node name="SnakeSuffocatingSound" type="AudioStreamPlayer" parent="."]
+[node name="SnakeSuffocatingSound" type="AudioStreamPlayer" parent="SnakeSoundController"]
 stream = ExtResource("8_f07f3")
 volume_db = 10.0
 
-[node name="SnakeSuckedInSound" type="AudioStreamPlayer" parent="."]
+[node name="SnakeSuckedInSound" type="AudioStreamPlayer" parent="SnakeSoundController"]
 stream = ExtResource("9_10gix")
