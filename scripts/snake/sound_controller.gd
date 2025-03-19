@@ -11,7 +11,7 @@ func play_fruit_eating_sound() -> void:
 	fruit_eating_sound.play()
 
 
-func play_death_by_walls_sound() -> void:
+func play_death_by_wall_sound() -> void:
 	snake_squished_sound.play()
 
 

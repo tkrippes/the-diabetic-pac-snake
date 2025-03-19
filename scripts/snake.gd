@@ -108,10 +108,10 @@ func _move_head() -> void:
 	head.collision_detector.force_raycast_update()
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
-		if collider.is_in_group("walls"):
-			sound_controller.play_death_by_walls_sound()
+		if collider is Wall:
+			sound_controller.play_death_by_wall_sound()
 			_die()
-		elif collider.is_in_group("snake_parts"):
+		elif collider is SnakeBody:
 			sound_controller.play_death_by_self_digestion_sound()
 			_die()
 		elif collider.is_in_group("sweets"):
