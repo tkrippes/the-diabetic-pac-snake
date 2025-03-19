@@ -12,6 +12,7 @@ enum GameState {
 
 @onready var world: World = $World
 @onready var user_interface: UserInterface = $UserInterface
+@onready var sound_controller: SoundController = $SoundController
 	
 
 func _process(_delta: float) -> void:
@@ -24,10 +25,12 @@ func _process(_delta: float) -> void:
 		if _state == GameState.RUNNING:
 			get_tree().paused = true
 			user_interface.show_pause_label()
+			sound_controller.play_pause_sound()
 			_state = GameState.PAUSED
 		elif _state == GameState.PAUSED:
 			get_tree().paused = false
 			user_interface.hide_pause_label()
+			sound_controller.play_unpause_sound()
 			_state = GameState.RUNNING
 
 	
