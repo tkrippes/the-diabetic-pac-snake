@@ -73,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	
 func start() -> void:
 	_move = true
+	sound_controller.play_start_sound()
 	
 	
 func reset() -> void:
