@@ -18,6 +18,10 @@ boot_splash/image="uid://b50yv8kuidqa1"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
+[audio]
+
+buses/default_bus_layout="uid://bqy06sr4qyabq"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=1

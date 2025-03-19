@@ -12,14 +12,18 @@ script = ExtResource("1_xu582")
 [node name="FruitEatingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_f41q6")
 volume_db = 5.0
+bus = &"SoundEffects"
 
 [node name="SnakeSquishedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gflhi")
 volume_db = -5.0
+bus = &"SoundEffects"
 
 [node name="SnakeSuffocatingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2iki6")
 volume_db = 10.0
+bus = &"SoundEffects"
 
 [node name="SnakeSuckedInSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_8oipa")
+bus = &"SoundEffects"
