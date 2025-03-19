@@ -5,9 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cd3myu31d37mo" path="res://scenes/user_interface.tscn" id="2_0wfyh"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_jyhfs")
 
 [node name="World" parent="." instance=ExtResource("1_o5qli")]
+process_mode = 1
 
 [node name="UserInterface" parent="." instance=ExtResource("2_0wfyh")]
 

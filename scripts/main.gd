@@ -5,7 +5,8 @@ var _state: GameState = GameState.START
 
 enum GameState {
 	START,
-	PLAYING,
+	RUNNING,
+	PAUSED,
 	GAME_OVER
 }
 
@@ -19,6 +20,16 @@ func _process(_delta: float) -> void:
 			_start_game()
 		elif _state == GameState.GAME_OVER:
 			_restart_game()
+	elif Input.is_action_just_pressed("pause"):
+		if _state == GameState.RUNNING:
+			get_tree().paused = true
+			user_interface.show_pause_label()
+			_state = GameState.PAUSED
+		elif _state == GameState.PAUSED:
+			get_tree().paused = false
+			user_interface.hide_pause_label()
+			_state = GameState.RUNNING
+
 	
 			
 func _on_snake_ate_fruit() -> void:
@@ -32,7 +43,7 @@ func _on_snake_died() -> void:
 			
 func _start_game() -> void:
 	_set_score(0)
-	_state = GameState.PLAYING
+	_state = GameState.RUNNING
 	user_interface.show_score_label()
 	world.start()
 	
