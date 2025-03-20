@@ -1,7 +1,7 @@
 class_name SpawnController
 extends Node
 
-@export var scene: PackedScene
+@export var scenes: Array[PackedScene]
 @export var spawn_timeout: float
 @export var despawn_timeout: float
 
@@ -44,6 +44,7 @@ func reset_timer() -> void:
 
 
 func _spawn_node(position: Vector2i) -> void:
+	var scene: PackedScene = scenes.pick_random()
 	_current_node = scene.instantiate()
 	_current_node.position = position
 	
