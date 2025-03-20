@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxrjpiv220p5i"]
+
+[ext_resource type="PackedScene" uid="uid://ivk845fngg8p" path="res://scenes/world/fruits/fruit.tscn" id="1_h7ejq"]
+[ext_resource type="Texture2D" uid="uid://dtbfu2edkm1tr" path="res://assets/art/fruits/Strawberry.png" id="2_avp4f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7ejq"]
+radius = 8.0
+height = 18.0
+
+[node name="Strawberry" instance=ExtResource("1_h7ejq")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -1)
+texture = ExtResource("2_avp4f")
+
+[node name="Hitbox" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_h7ejq")
