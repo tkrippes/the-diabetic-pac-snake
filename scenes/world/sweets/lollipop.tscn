@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcsxr2xnu8d2"]
+
+[ext_resource type="PackedScene" uid="uid://5vg4g1bbnlt4" path="res://scenes/world/sweets/sweet.tscn" id="1_bt0qx"]
+[ext_resource type="Texture2D" uid="uid://b4ckwbn45fyp1" path="res://assets/art/sweets/lollipop.png" id="2_k6g8b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ml3xh"]
+radius = 15.0
+
+[node name="Lollipop" instance=ExtResource("1_bt0qx")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(1, -1)
+texture = ExtResource("2_k6g8b")
+
+[node name="Hitbox" parent="." index="1"]
+shape = SubResource("CircleShape2D_ml3xh")
