@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1aefsrrunjab"]
+[gd_scene load_steps=15 format=3 uid="uid://d1aefsrrunjab"]
 
 [ext_resource type="Script" uid="uid://dus8anil2juab" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dvih3eix4tmwx" path="res://scenes/world/arena.tscn" id="1_rwgxs"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://doung663f41ej" path="res://scenes/world/fruits/grape.tscn" id="11_xo05s"]
 [ext_resource type="PackedScene" uid="uid://nlkhnkrg48dl" path="res://scenes/world/sweets/chocolate_bar.tscn" id="12_q5onr"]
 [ext_resource type="PackedScene" uid="uid://dcsxr2xnu8d2" path="res://scenes/world/sweets/lollipop.tscn" id="13_jhx03"]
+[ext_resource type="PackedScene" uid="uid://d4n4imh5asdri" path="res://scenes/world/sweets/cookie.tscn" id="14_o8fc1"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
@@ -31,7 +32,7 @@ spawn_timeout = 1.0
 despawn_timeout = 10.0
 
 [node name="SweetsController" parent="." instance=ExtResource("6_qfnet")]
-scenes = Array[PackedScene]([ExtResource("5_71j4m"), ExtResource("12_q5onr"), ExtResource("13_jhx03")])
+scenes = Array[PackedScene]([ExtResource("5_71j4m"), ExtResource("12_q5onr"), ExtResource("13_jhx03"), ExtResource("14_o8fc1")])
 spawn_timeout = 5.0
 despawn_timeout = 5.0
 
