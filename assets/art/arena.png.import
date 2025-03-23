@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpmghjumfm0fw"
-path="res://.godot/imported/Grape.png-bf237777ff79800844be7e1d4406721e.ctex"
+uid="uid://cvjk5dycvdc5u"
+path="res://.godot/imported/arena.png-cb0aee3cb97e0a63ded60964eb2a8bd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/fruits/Grape.png"
-dest_files=["res://.godot/imported/Grape.png-bf237777ff79800844be7e1d4406721e.ctex"]
+source_file="res://assets/art/arena.png"
+dest_files=["res://.godot/imported/arena.png-cb0aee3cb97e0a63ded60964eb2a8bd1.ctex"]
 
 [params]
 

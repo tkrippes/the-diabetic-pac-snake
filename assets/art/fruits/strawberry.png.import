@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://14p8fyjdxx15"
-path="res://.godot/imported/Candy.png-8f4352eecb976568920448f30c132b72.ctex"
+uid="uid://dtbfu2edkm1tr"
+path="res://.godot/imported/strawberry.png-c8e33e8bf80fa9bc7a66ac9f726e46eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/sweets/Candy.png"
-dest_files=["res://.godot/imported/Candy.png-8f4352eecb976568920448f30c132b72.ctex"]
+source_file="res://assets/art/fruits/strawberry.png"
+dest_files=["res://.godot/imported/strawberry.png-c8e33e8bf80fa9bc7a66ac9f726e46eb.ctex"]
 
 [params]
 

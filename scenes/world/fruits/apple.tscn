@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hpyq1rdtyngd"]
 
 [ext_resource type="PackedScene" uid="uid://ivk845fngg8p" path="res://scenes/world/fruits/fruit.tscn" id="1_86yx1"]
-[ext_resource type="Texture2D" uid="uid://bwn2s6b7nfe63" path="res://assets/art/fruits/Apple.png" id="2_n2ce7"]
+[ext_resource type="Texture2D" uid="uid://bwn2s6b7nfe63" path="res://assets/art/fruits/apple.png" id="2_n2ce7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86yx1"]
 height = 24.0

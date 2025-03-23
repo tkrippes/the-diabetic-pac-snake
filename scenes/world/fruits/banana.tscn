@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vidnq8u5568r"]
 
-[ext_resource type="Texture2D" uid="uid://bw6kmg78oxdyw" path="res://assets/art/fruits/Banana.png" id="1_po1r4"]
+[ext_resource type="Texture2D" uid="uid://bw6kmg78oxdyw" path="res://assets/art/fruits/banana.png" id="1_po1r4"]
 [ext_resource type="PackedScene" uid="uid://ivk845fngg8p" path="res://scenes/world/fruits/fruit.tscn" id="1_rbwyv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37uld"]

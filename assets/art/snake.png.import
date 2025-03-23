@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc501387ctwrj"
-path="res://.godot/imported/Orange.png-c4c090a7e0ad65b09fa2e88a26f7b588.ctex"
+uid="uid://p3qpi4gdxpcp"
+path="res://.godot/imported/snake.png-de1224e96173b1ee938579b076e15343.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/fruits/Orange.png"
-dest_files=["res://.godot/imported/Orange.png-c4c090a7e0ad65b09fa2e88a26f7b588.ctex"]
+source_file="res://assets/art/snake.png"
+dest_files=["res://.godot/imported/snake.png-de1224e96173b1ee938579b076e15343.ctex"]
 
 [params]
 
