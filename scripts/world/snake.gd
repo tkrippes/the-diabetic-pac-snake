@@ -87,8 +87,20 @@ func reset() -> void:
 	
 	
 func _update_head() -> void:
+	_animate_head()
 	_rotate_head()
 	_move_head()
+
+
+func _animate_head() -> void:
+	if head.sprite.frame == MOUTH_OPENED_FRAME:
+		head.sprite.frame = MOUTH_CLOSED_FRAME
+	else:
+		head.sprite.frame = MOUTH_OPENED_FRAME
+
+
+func _rotate_head() -> void:
+	_rotate(head, head.sprite, _current_direction)
 
 
 func _move_head() -> void:
@@ -124,17 +136,11 @@ func _move_head() -> void:
 			collider.queue_free()
 			head.sprite.frame = MOUTH_CLOSED_FRAME
 			ate_fruit.emit()
-	else:
-		head.sprite.frame = MOUTH_OPENED_FRAME
 	
 	# NOTE: collision already detected with collision detector of snake head
 	var _collision := head.move_and_collide(position_offset)
 
 	_last_direction = _current_direction
-
-
-func _rotate_head() -> void:
-	_rotate(head, head.sprite, _current_direction)
 
 
 func _update_bodies() -> void:
