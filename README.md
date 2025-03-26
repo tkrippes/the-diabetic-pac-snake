@@ -30,6 +30,7 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 
 ### Audio
 
+- Background music: [Do Not Wake The Snake](https://pixabay.com/music/world-do-not-wake-the-snake-164474/) by [PaoloArgento](https://pixabay.com/users/paoloargento-38603296/)
 - Pause sound: [pause](https://pixabay.com/sound-effects/pause-89443/) by [crisstanza (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
 - Unpause sound: [unpause](https://pixabay.com/sound-effects/unpause-106278/) by [crisstanza (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
 - Fruit eating sound: [Eating apple](https://pixabay.com/sound-effects/eating-apple-6928/) by [niwki (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
