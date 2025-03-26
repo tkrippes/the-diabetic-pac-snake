@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxbyrj0ipedab"]
+[gd_scene load_steps=5 format=3 uid="uid://dxbyrj0ipedab"]
 
 [ext_resource type="AudioStream" uid="uid://cra1otkm7cfqp" path="res://assets/audio/pause.mp3" id="1_bq2h3"]
 [ext_resource type="Script" uid="uid://bksbhe65b3wi8" path="res://scripts/sound_controller.gd" id="1_svxng"]
+[ext_resource type="AudioStream" uid="uid://dd2046bjwryaw" path="res://assets/audio/background_music.mp3" id="2_32gpw"]
 [ext_resource type="AudioStream" uid="uid://ckjvvtkmynoq2" path="res://assets/audio/unpause.mp3" id="2_svxng"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_svxng")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_32gpw")
+bus = &"Music"
 
 [node name="PauseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_bq2h3")
