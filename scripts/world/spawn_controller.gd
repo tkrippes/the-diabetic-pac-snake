@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		_elapsed_time += delta
 
 		if _current_node == null and _elapsed_time > spawn_settings.spawn_timeout:
-			_spawn_node(arena_settings.get_random_grid_position())
+			_spawn_node(arena_settings.get_random_position())
 			_elapsed_time = 0.0
 		elif _current_node != null and _elapsed_time > spawn_settings.despawn_timeout:
 			_despawn_node()
