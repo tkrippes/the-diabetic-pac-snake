@@ -1,8 +1,8 @@
-# My Snake
-A [snake](https://en.wikipedia.org/wiki/Snake_(1998_video_game)) clone created in the Godot game engine.
+# Pac-Snake
+A [Snake](https://en.wikipedia.org/wiki/Snake_(1998_video_game)) clone with a [Pac-Man](https://en.wikipedia.org/wiki/Pac-Man)-like aesthetic created in the Godot game engine.
 
 ## Description
-Snake is a single player game. You are playing as a snake who needs to eat fruits in order to grow. For every fruit you
+Pac-Snake is a single player game. You are playing as a Pac-Man-like snake who needs to eat fruits in order to grow. For every fruit you
 eat you grow by one in size and gain one point. But beware of the sweets, eating one of those will cause the snake to 
 die from diabetes. The snake will also die by trying to eat the wall or itself.
 
