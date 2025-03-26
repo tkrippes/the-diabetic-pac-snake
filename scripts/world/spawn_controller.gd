@@ -1,9 +1,7 @@
 class_name SpawnController
 extends Node
 
-@export var scenes: Array[PackedScene]
-@export var spawn_timeout: float
-@export var despawn_timeout: float
+@export var spawn_settings: SpawnSettings
 
 @export var tile_size: int = 32
 @export var grid_min_position := Vector2i(1, 1)
@@ -19,11 +17,11 @@ func _process(delta: float) -> void:
 	if _start_timer:
 		_elapsed_time += delta
 
-		if _current_node == null and _elapsed_time > spawn_timeout:
+		if _current_node == null and _elapsed_time > spawn_settings.spawn_timeout:
 			_spawn_node(tile_size * Vector2i(randi_range(grid_min_position.x, grid_max_position.x),
 				randi_range(grid_min_position.y, grid_max_position.y)) + grid_offset)
 			_elapsed_time = 0.0
-		elif _current_node != null and _elapsed_time > despawn_timeout:
+		elif _current_node != null and _elapsed_time > spawn_settings.despawn_timeout:
 			_despawn_node()
 			_elapsed_time = 0.0
 
@@ -44,7 +42,7 @@ func reset_timer() -> void:
 
 
 func _spawn_node(position: Vector2i) -> void:
-	var scene: PackedScene = scenes.pick_random()
+	var scene: PackedScene = spawn_settings.scenes.pick_random()
 	_current_node = scene.instantiate()
 	_current_node.position = position
 	

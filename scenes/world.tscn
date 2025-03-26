@@ -1,24 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1aefsrrunjab"]
+[gd_scene load_steps=7 format=3 uid="uid://d1aefsrrunjab"]
 
 [ext_resource type="Script" uid="uid://dus8anil2juab" path="res://scripts/world.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dvih3eix4tmwx" path="res://scenes/world/arena.tscn" id="1_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://cqqmj8c047o68" path="res://scenes/world/snake.tscn" id="2_4wyf3"]
-[ext_resource type="PackedScene" uid="uid://vidnq8u5568r" path="res://scenes/world/fruits/banana.tscn" id="4_k0juu"]
-[ext_resource type="PackedScene" uid="uid://b1wbwcah03bqv" path="res://scenes/world/sweets/candy.tscn" id="5_71j4m"]
+[ext_resource type="Resource" uid="uid://s0k21cdpy74x" path="res://resources/fruits_spawn_settings.tres" id="5_xo05s"]
 [ext_resource type="PackedScene" uid="uid://bovyxkf81qvic" path="res://scenes/world/spawn_controller.tscn" id="6_qfnet"]
-[ext_resource type="PackedScene" uid="uid://cxrjpiv220p5i" path="res://scenes/world/fruits/strawberry.tscn" id="7_e3hyu"]
-[ext_resource type="PackedScene" uid="uid://bdcq7ai0nxp8i" path="res://scenes/world/fruits/orange.tscn" id="8_q5onr"]
-[ext_resource type="PackedScene" uid="uid://hpyq1rdtyngd" path="res://scenes/world/fruits/apple.tscn" id="9_jhx03"]
-[ext_resource type="PackedScene" uid="uid://b37lcr12y27x3" path="res://scenes/world/fruits/blueberry.tscn" id="10_o8fc1"]
-[ext_resource type="PackedScene" uid="uid://doung663f41ej" path="res://scenes/world/fruits/grape.tscn" id="11_xo05s"]
-[ext_resource type="PackedScene" uid="uid://nlkhnkrg48dl" path="res://scenes/world/sweets/chocolate_bar.tscn" id="12_q5onr"]
-[ext_resource type="PackedScene" uid="uid://dcsxr2xnu8d2" path="res://scenes/world/sweets/lollipop.tscn" id="13_jhx03"]
-[ext_resource type="PackedScene" uid="uid://d4n4imh5asdri" path="res://scenes/world/sweets/cookie.tscn" id="14_o8fc1"]
+[ext_resource type="Resource" uid="uid://b21yo7r3j5f2r" path="res://resources/sweets_spawn_settings.tres" id="12_dss4m"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4wyf3")
-fruit_scene = ExtResource("4_k0juu")
-sweet_scene = ExtResource("5_71j4m")
 
 [node name="Arena" parent="." instance=ExtResource("1_rwgxs")]
 
@@ -27,14 +17,10 @@ z_index = 1
 position = Vector2(80, 240)
 
 [node name="FruitsController" parent="." instance=ExtResource("6_qfnet")]
-scenes = Array[PackedScene]([ExtResource("7_e3hyu"), ExtResource("8_q5onr"), ExtResource("4_k0juu"), ExtResource("9_jhx03"), ExtResource("10_o8fc1"), ExtResource("11_xo05s")])
-spawn_timeout = 1.0
-despawn_timeout = 10.0
+spawn_settings = ExtResource("5_xo05s")
 
 [node name="SweetsController" parent="." instance=ExtResource("6_qfnet")]
-scenes = Array[PackedScene]([ExtResource("5_71j4m"), ExtResource("12_q5onr"), ExtResource("13_jhx03"), ExtResource("14_o8fc1")])
-spawn_timeout = 5.0
-despawn_timeout = 5.0
+spawn_settings = ExtResource("12_dss4m")
 
 [connection signal="ate_fruit" from="Snake" to="." method="_on_snake_ate_fruit"]
 [connection signal="died" from="Snake" to="." method="_on_snake_died"]

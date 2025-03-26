@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpawnSettings" load_steps=6 format=3 uid="uid://b21yo7r3j5f2r"]
+
+[ext_resource type="PackedScene" uid="uid://b1wbwcah03bqv" path="res://scenes/world/sweets/candy.tscn" id="1_26p7p"]
+[ext_resource type="Script" uid="uid://cim5b6o16an07" path="res://scripts/world/spawn_settings.gd" id="1_ofkfl"]
+[ext_resource type="PackedScene" uid="uid://nlkhnkrg48dl" path="res://scenes/world/sweets/chocolate_bar.tscn" id="2_qwgqv"]
+[ext_resource type="PackedScene" uid="uid://d4n4imh5asdri" path="res://scenes/world/sweets/cookie.tscn" id="3_43hbq"]
+[ext_resource type="PackedScene" uid="uid://dcsxr2xnu8d2" path="res://scenes/world/sweets/lollipop.tscn" id="4_qwsah"]
+
+[resource]
+script = ExtResource("1_ofkfl")
+scenes = Array[PackedScene]([ExtResource("1_26p7p"), ExtResource("2_qwgqv"), ExtResource("3_43hbq"), ExtResource("4_qwsah")])
+spawn_timeout = 5.0
+despawn_timeout = 5.0
+metadata/_custom_type_script = "uid://cim5b6o16an07"
