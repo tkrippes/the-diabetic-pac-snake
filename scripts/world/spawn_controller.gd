@@ -34,6 +34,13 @@ func stop() -> void:
 
 func reset_timer() -> void:
 	_elapsed_time = 0.0
+	
+	
+func get_occupied_positions() -> Array[Vector2]:
+	if _current_node == null:
+		return []
+	
+	return [_current_node.position]
 
 
 func _spawn_node(position: Vector2i) -> void:

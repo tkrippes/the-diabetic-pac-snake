@@ -90,6 +90,16 @@ func reset() -> void:
 	_reset_directions()
 	
 	
+func get_occupied_positions() -> Array[Vector2]:
+	# TODO: add some spaces before snake head to occupied snake
+	# NOTE: head, bodies and tail position need to be offset by the position of the snake itself to get global coordinates
+	var occupied_positions: Array[Vector2] = [head.position + position, tail.position + position]
+	for body in bodies:
+		occupied_positions.append(body.position + position)
+	
+	return occupied_positions
+	
+	
 func _update_head() -> void:
 	_animate_head()
 	_rotate_head()
