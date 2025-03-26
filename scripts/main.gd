@@ -64,8 +64,8 @@ func _pause_game() -> void:
 func _unpause_game() -> void:
 	get_tree().paused = false
 	user_interface.hide_pause_label()
-	sound_controller.play_background_music()
 	sound_controller.play_unpause_sound()
+	sound_controller.play_background_music()
 	_state = GameState.RUNNING
 
 
