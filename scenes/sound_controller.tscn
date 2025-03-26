@@ -11,6 +11,7 @@ script = ExtResource("1_svxng")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_32gpw")
 bus = &"Music"
+parameters/looping = true
 
 [node name="PauseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_bq2h3")
