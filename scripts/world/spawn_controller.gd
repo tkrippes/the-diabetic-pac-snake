@@ -14,8 +14,7 @@ func _process(delta: float) -> void:
 		_elapsed_time += delta
 
 		if _current_node == null and _elapsed_time > spawn_settings.spawn_timeout:
-			_spawn_node(arena_settings.tile_size * Vector2i(randi_range(arena_settings.grid_min_position.x, arena_settings.grid_max_position.x),
-				randi_range(arena_settings.grid_min_position.y, arena_settings.grid_max_position.y)) + arena_settings.grid_offset)
+			_spawn_node(arena_settings.get_random_grid_position())
 			_elapsed_time = 0.0
 		elif _current_node != null and _elapsed_time > spawn_settings.despawn_timeout:
 			_despawn_node()
