@@ -11,8 +11,8 @@ enum Direction {
 	RIGHT,
 }
 
+@export var arena_settings: ArenaSettings
 @export var movement_timeout: float = 0.25
-@export var tile_size: int = 32
 
 @onready var head: SnakeHead = $Head
 @onready var bodies: Array[SnakeBody] = [$Body]
@@ -109,13 +109,13 @@ func _move_head() -> void:
 
 	match _current_direction:
 		Direction.UP:
-			position_offset = Vector2(0, -tile_size)
+			position_offset = Vector2(0, -arena_settings.tile_size)
 		Direction.DOWN:
-			position_offset = Vector2(0, tile_size)
+			position_offset = Vector2(0, arena_settings.tile_size)
 		Direction.LEFT:
-			position_offset = Vector2(-tile_size, 0)
+			position_offset = Vector2(-arena_settings.tile_size, 0)
 		Direction.RIGHT:
-			position_offset = Vector2(tile_size, 0)
+			position_offset = Vector2(arena_settings.tile_size, 0)
 	
 	# NOTE: needed to take into account recent snake head rotation
 	head.collision_detector.force_raycast_update()

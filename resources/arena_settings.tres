@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArenaSettings" load_steps=2 format=3 uid="uid://k2kq01m17t8"]
+
+[ext_resource type="Script" uid="uid://bfrov16ay1616" path="res://scripts/world/arena_settings.gd" id="1_7ky5t"]
+
+[resource]
+script = ExtResource("1_7ky5t")
+tile_size = 32
+grid_min_position = Vector2i(1, 1)
+grid_max_position = Vector2i(18, 13)
+grid_offset = Vector2i(16, 16)
+metadata/_custom_type_script = "uid://bfrov16ay1616"

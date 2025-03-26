@@ -2,11 +2,7 @@ class_name SpawnController
 extends Node
 
 @export var spawn_settings: SpawnSettings
-
-@export var tile_size: int = 32
-@export var grid_min_position := Vector2i(1, 1)
-@export var grid_max_position := Vector2i(18, 13)
-@export var grid_offset := Vector2i(16, 16)
+@export var arena_settings: ArenaSettings
 
 var _current_node: Node2D = null
 var _start_timer := false
@@ -18,8 +14,8 @@ func _process(delta: float) -> void:
 		_elapsed_time += delta
 
 		if _current_node == null and _elapsed_time > spawn_settings.spawn_timeout:
-			_spawn_node(tile_size * Vector2i(randi_range(grid_min_position.x, grid_max_position.x),
-				randi_range(grid_min_position.y, grid_max_position.y)) + grid_offset)
+			_spawn_node(arena_settings.tile_size * Vector2i(randi_range(arena_settings.grid_min_position.x, arena_settings.grid_max_position.x),
+				randi_range(arena_settings.grid_min_position.y, arena_settings.grid_max_position.y)) + arena_settings.grid_offset)
 			_elapsed_time = 0.0
 		elif _current_node != null and _elapsed_time > spawn_settings.despawn_timeout:
 			_despawn_node()
