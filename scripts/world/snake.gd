@@ -33,8 +33,12 @@ var _move                  := false
 var _elapsed_movement_time := 0.0
 var _add_body_on_next_move := false
 
-const MOUTH_OPENED_FRAME := 2
-const MOUTH_CLOSED_FRAME := 3
+const SNAKE_HEAD_MOUTH_OPENED_FRAME := 4
+const SNAKE_HEAD_MOUTH_CLOSED_FRAME := 5
+
+const SNAKE_TAIL_UPPER_FRAME := 0
+const SNAKE_TAIL_MIDDLE_FRAME := 2
+const SNAKE_TAIL_LOWER_FRAME := 1
 
 
 func _ready() -> void:
@@ -93,10 +97,10 @@ func _update_head() -> void:
 
 
 func _animate_head() -> void:
-	if head.sprite.frame == MOUTH_OPENED_FRAME:
-		head.sprite.frame = MOUTH_CLOSED_FRAME
+	if head.sprite.frame == SNAKE_HEAD_MOUTH_OPENED_FRAME:
+		head.sprite.frame = SNAKE_HEAD_MOUTH_CLOSED_FRAME
 	else:
-		head.sprite.frame = MOUTH_OPENED_FRAME
+		head.sprite.frame = SNAKE_HEAD_MOUTH_OPENED_FRAME
 
 
 func _rotate_head() -> void:
@@ -134,7 +138,7 @@ func _move_head() -> void:
 			_add_body_on_next_move = true
 			sound_controller.play_fruit_eating_sound()
 			collider.queue_free()
-			head.sprite.frame = MOUTH_CLOSED_FRAME
+			head.sprite.frame = SNAKE_HEAD_MOUTH_CLOSED_FRAME
 			ate_fruit.emit()
 	
 	# NOTE: collision already detected with collision detector of snake head
@@ -184,8 +188,16 @@ func _add_body() -> void:
 	
 	
 func _update_tail() -> void:
+	_animate_tail()
 	_move_tail()
 	_rotate_tail()
+
+
+func _animate_tail() -> void:
+	if tail.sprite.frame == SNAKE_TAIL_MIDDLE_FRAME or tail.sprite.frame == SNAKE_TAIL_LOWER_FRAME:
+		tail.sprite.frame = SNAKE_TAIL_UPPER_FRAME
+	else:
+		tail.sprite.frame = SNAKE_TAIL_LOWER_FRAME
 
 
 func _move_tail() -> void:
@@ -239,7 +251,7 @@ func _reset_head() -> void:
 	head.position = _initial_head_position
 	head.rotation_degrees = 0
 	head.sprite.flip_v = false
-	head.sprite.frame = MOUTH_OPENED_FRAME
+	head.sprite.frame = SNAKE_HEAD_MOUTH_OPENED_FRAME
 
 
 func _reset_bodies() -> void:
@@ -256,6 +268,7 @@ func _reset_tail() -> void:
 	tail.position = _initial_tail_position
 	tail.rotation_degrees = 0
 	tail.sprite.flip_v = false
+	tail.sprite.frame = SNAKE_TAIL_MIDDLE_FRAME
 
 
 func _reset_directions() -> void:

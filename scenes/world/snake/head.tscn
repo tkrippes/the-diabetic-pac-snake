@@ -12,8 +12,8 @@ metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_v6tm7")
-hframes = 4
-frame = 2
+hframes = 6
+frame = 4
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a5f6l")
