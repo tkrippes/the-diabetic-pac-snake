@@ -13,6 +13,7 @@ enum Direction {
 
 @export var arena_settings: ArenaSettings
 @export var movement_timeout: float = 0.25
+@export var clear_area_radius: int = 2
 
 @onready var head: SnakeHead = $Head
 @onready var bodies: Array[SnakeBody] = [$Body]
@@ -91,11 +92,18 @@ func reset() -> void:
 	
 	
 func get_occupied_positions() -> Array[Vector2]:
-	# TODO: add some spaces before snake head to occupied snake
 	# NOTE: head, bodies and tail position need to be offset by the position of the snake itself to get global coordinates
-	var occupied_positions: Array[Vector2] = [head.position + position, tail.position + position]
+	var occupied_positions: Array[Vector2] = []
+	# NOTE: clear area of clear_area_radius around snake head
+	for i in range(-clear_area_radius, clear_area_radius + 1):
+		for j in range(-clear_area_radius, clear_area_radius + 1):
+			occupied_positions.append(head.position + position +
+				Vector2(i * arena_settings.tile_size, j * arena_settings.tile_size))
+
 	for body in bodies:
 		occupied_positions.append(body.position + position)
+	
+	occupied_positions.append(tail.position + position)
 	
 	return occupied_positions
 	
