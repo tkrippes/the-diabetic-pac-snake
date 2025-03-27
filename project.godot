@@ -41,7 +41,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="/home/tkrippes/GameDevelopment/Godot/my_snake/records/record.avi"
+movie_writer/movie_file="/home/tkrippes/GameDevelopment/Godot/the_diabetic_pac_snake/records/record.avi"
 
 [global_group]
 
