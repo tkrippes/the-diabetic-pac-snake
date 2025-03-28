@@ -11,6 +11,6 @@
 [resource]
 script = ExtResource("7_s7jyl")
 scenes = Array[PackedScene]([ExtResource("1_x5n40"), ExtResource("2_4kjkr"), ExtResource("3_2ngld"), ExtResource("4_rd1jb"), ExtResource("5_3lxnc"), ExtResource("6_r2c77")])
-spawn_timeout = 1.0
-despawn_timeout = 10.0
+spawn_timeout = 0.5
+despawn_timeout = 15.0
 metadata/_custom_type_script = "uid://cim5b6o16an07"
