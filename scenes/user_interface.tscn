@@ -25,13 +25,17 @@ text = "Press enter to start"
 uppercase = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-visible = false
 layout_mode = 1
-offset_top = -8.0
-offset_right = 121.0
-offset_bottom = 37.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 30.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 20
 text = "Score: 0"
 uppercase = true
 
