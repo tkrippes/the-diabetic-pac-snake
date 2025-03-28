@@ -28,3 +28,8 @@ func play_pause_sound() -> void:
 
 func play_unpause_sound() -> void:
     unpause_sound.play()
+
+
+func play_game_won_sound() -> void:
+    # TODO
+    pass

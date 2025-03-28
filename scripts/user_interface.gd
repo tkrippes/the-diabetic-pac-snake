@@ -6,6 +6,7 @@ extends Control
 @onready var score_label: Label = $ScoreLabel
 @onready var pause_label: Label = $PauseLabel
 @onready var game_over_label: Label = $GameOverLabel
+@onready var game_won_label: Label = $GameWonLabel
 
 
 func show_start_label() -> void:
@@ -13,6 +14,7 @@ func show_start_label() -> void:
 	score_label.hide()
 	pause_label.hide()
 	game_over_label.hide()
+	game_won_label.hide()
 	
 	
 func show_score_label() -> void:
@@ -20,6 +22,7 @@ func show_score_label() -> void:
 	score_label.show()
 	pause_label.hide()
 	game_over_label.hide()
+	game_won_label.hide()
 
 
 func update_score(score: int) -> void:
@@ -39,3 +42,12 @@ func show_game_over_label() -> void:
 	score_label.show()
 	pause_label.hide()
 	game_over_label.show()
+	game_won_label.hide()
+
+
+func show_game_won_label() -> void:
+	start_label.hide()
+	score_label.show()
+	pause_label.hide()
+	game_over_label.hide()
+	game_won_label.show()

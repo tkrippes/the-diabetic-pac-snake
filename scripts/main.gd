@@ -7,8 +7,11 @@ enum GameState {
 	START,
 	RUNNING,
 	PAUSED,
-	GAME_OVER
+	GAME_OVER,
+	GAME_WON
 }
+
+@export var winning_score: int = 100
 
 @onready var world: World = $World
 @onready var user_interface: UserInterface = $UserInterface
@@ -72,3 +75,14 @@ func _unpause_game() -> void:
 func _set_score(score: int) -> void:
 	_score = score
 	user_interface.update_score(_score)
+
+	if (_score == winning_score):
+		_stop_game()
+
+
+func _stop_game() -> void:
+	get_tree().paused = true
+	user_interface.show_game_won_label()
+	sound_controller.stop_background_music()
+	sound_controller.play_game_won_sound()
+	_state = GameState.GAME_WON
