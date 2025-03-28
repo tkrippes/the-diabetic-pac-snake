@@ -25,6 +25,7 @@ text = "Press enter to start"
 uppercase = true
 
 [node name="ScoreLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
