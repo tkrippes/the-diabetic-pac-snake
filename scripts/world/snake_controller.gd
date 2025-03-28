@@ -1,4 +1,4 @@
-class_name Snake
+class_name SnakeController
 extends Node2D
 
 signal ate_fruit

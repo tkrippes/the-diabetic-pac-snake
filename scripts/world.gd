@@ -6,13 +6,13 @@ signal snake_died
 
 @export var arena_settings: ArenaSettings
 
-@onready var snake: Snake = $Snake
+@onready var snake_controller: SnakeController = $SnakeController
 @onready var fruits_controller: SpawnController = $FruitsController
 @onready var sweets_controller: SpawnController = $SweetsController
 
 
 func _process(_delta: float) -> void:
-	var occupied_positions: Array[Vector2] = snake.get_occupied_positions()
+	var occupied_positions: Array[Vector2] = snake_controller.get_occupied_positions()
 	occupied_positions.append_array(fruits_controller.get_occupied_positions())
 	occupied_positions.append_array(sweets_controller.get_occupied_positions())
 	
@@ -31,10 +31,10 @@ func _on_snake_died() -> void:
 
 
 func start() -> void:
-	snake.start()
+	snake_controller.start()
 	fruits_controller.start()
 	sweets_controller.start()
 	
 	
 func reset() -> void:
-	snake.reset()
+	snake_controller.reset()
