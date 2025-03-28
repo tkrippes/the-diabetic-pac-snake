@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://c0vxpi7ss20u6"]
 
-[sub_resource type="SystemFont" id="SystemFont_fgeqy"]
+[ext_resource type="FontFile" uid="uid://dap3skoacm3cr" path="res://assets/fonts/snake_chan.ttf" id="1_cviax"]
 
 [resource]
-default_font = SubResource("SystemFont_fgeqy")
-default_font_size = 48
+default_font = ExtResource("1_cviax")
+default_font_size = 36
