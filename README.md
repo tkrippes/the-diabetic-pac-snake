@@ -39,6 +39,7 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 - Snake suffocating sound: [ahogarse](https://pixabay.com/sound-effects/ahogarse-47092/) by [juliandmc4 (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
 - Snake sucked in sound: [Cartoon Slurp](https://pixabay.com/sound-effects/cartoon-slurp-37066/) by [Breviceps 
   (Freesound)](https://pixabay.com/users/freesound_community-46691455/)
+- Game won sound: [Violin Win 3](https://pixabay.com/sound-effects/violin-win-3-180434/) by [floraphonic](https://pixabay.com/users/floraphonic-38928062/)
 
 ### Fonts
 
