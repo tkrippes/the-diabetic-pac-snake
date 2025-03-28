@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxbyrj0ipedab"]
+[gd_scene load_steps=6 format=3 uid="uid://dxbyrj0ipedab"]
 
 [ext_resource type="AudioStream" uid="uid://cra1otkm7cfqp" path="res://assets/audio/pause.mp3" id="1_bq2h3"]
 [ext_resource type="Script" uid="uid://bksbhe65b3wi8" path="res://scripts/sound_controller.gd" id="1_svxng"]
 [ext_resource type="AudioStream" uid="uid://5kpqwv7xc4b" path="res://assets/audio/background_music.mp3" id="2_32gpw"]
 [ext_resource type="AudioStream" uid="uid://ckjvvtkmynoq2" path="res://assets/audio/unpause.mp3" id="2_svxng"]
+[ext_resource type="AudioStream" uid="uid://bbt5yjd6u47fh" path="res://assets/audio/game_won_sound.mp3" id="5_im1f3"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_svxng")
@@ -20,4 +21,9 @@ bus = &"SoundEffects"
 
 [node name="UnpauseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_svxng")
+bus = &"SoundEffects"
+
+[node name="GameWonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_im1f3")
+volume_db = -5.0
 bus = &"SoundEffects"

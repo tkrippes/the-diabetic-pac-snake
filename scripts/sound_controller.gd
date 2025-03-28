@@ -4,6 +4,7 @@ extends Node
 @onready var background_music: AudioStreamPlayer = $BackgroundMusic
 @onready var pause_sound: AudioStreamPlayer = $PauseSound
 @onready var unpause_sound: AudioStreamPlayer = $UnpauseSound
+@onready var game_won_sound: AudioStreamPlayer = $GameWonSound
 
 var _background_music_position: float = 0.0
 
@@ -31,5 +32,4 @@ func play_unpause_sound() -> void:
 
 
 func play_game_won_sound() -> void:
-    # TODO
-    pass
+    game_won_sound.play()
