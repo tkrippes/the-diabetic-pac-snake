@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf3dod2of88ca"]
+
+[ext_resource type="Script" uid="uid://bwkwffl3cikl" path="res://scripts/world/snake/snake_sound_controller.gd" id="1_0fu0a"]
+[ext_resource type="AudioStream" uid="uid://cehkeyggdpqcp" path="res://assets/audio/fruit_eating.mp3" id="2_feqd4"]
+[ext_resource type="AudioStream" uid="uid://bb62q4sufy5ic" path="res://assets/audio/snake_squished.mp3" id="3_gdqve"]
+[ext_resource type="AudioStream" uid="uid://cnyyqya5i3tyj" path="res://assets/audio/snake_suffocating.mp3" id="4_kel7f"]
+[ext_resource type="AudioStream" uid="uid://d3ub3ac8sywgd" path="res://assets/audio/snaked_sucked_in.mp3" id="5_1mywt"]
+[ext_resource type="AudioStream" uid="uid://bcglpv705xh12" path="res://assets/audio/snake_hissing.mp3" id="6_x84es"]
+
+[node name="SnakeSoundController" type="Node"]
+script = ExtResource("1_0fu0a")
+
+[node name="FruitEatingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_feqd4")
+volume_db = 7.0
+bus = &"SoundEffects"
+
+[node name="SnakeSquishedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gdqve")
+volume_db = -7.0
+bus = &"SoundEffects"
+
+[node name="SnakeSuffocatingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kel7f")
+volume_db = 10.0
+bus = &"SoundEffects"
+
+[node name="SnakeSuckedInSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1mywt")
+bus = &"SoundEffects"
+
+[node name="SnakeHissingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x84es")
+volume_db = 12.0
+pitch_scale = 1.5
+bus = &"SoundEffects"

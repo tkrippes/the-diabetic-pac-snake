@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6rw5uid0k24n"]
 
-[ext_resource type="Script" uid="uid://cdyqqco1kojop" path="res://scripts/world/snake/tail.gd" id="1_uwb1n"]
+[ext_resource type="Script" uid="uid://cdyqqco1kojop" path="res://scripts/world/snake/snake_tail.gd" id="1_uwb1n"]
 [ext_resource type="Texture2D" uid="uid://p3qpi4gdxpcp" path="res://assets/art/snake.png" id="2_55p3c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auphx"]
