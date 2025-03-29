@@ -92,18 +92,17 @@ func reset() -> void:
 	
 	
 func get_occupied_positions() -> Array[Vector2]:
-	# NOTE: head, bodies and tail position need to be offset by the position of the snake itself to get global coordinates
 	var occupied_positions: Array[Vector2] = []
 	# NOTE: clear area of clear_area_radius around snake head
 	for i in range(-clear_area_radius, clear_area_radius + 1):
 		for j in range(-clear_area_radius, clear_area_radius + 1):
-			occupied_positions.append(head.position + position +
+			occupied_positions.append(head.global_position +
 				Vector2(i * arena_settings.tile_size, j * arena_settings.tile_size))
 
 	for body in bodies:
-		occupied_positions.append(body.position + position)
+		occupied_positions.append(body.global_position)
 	
-	occupied_positions.append(tail.position + position)
+	occupied_positions.append(tail.global_position)
 	
 	return occupied_positions
 	

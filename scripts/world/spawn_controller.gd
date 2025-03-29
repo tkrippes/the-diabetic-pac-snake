@@ -40,13 +40,13 @@ func get_occupied_positions() -> Array[Vector2]:
 	if _current_node == null:
 		return []
 	
-	return [_current_node.position]
+	return [_current_node.global_position]
 
 
 func _spawn_node(position: Vector2i) -> void:
 	var scene: PackedScene = spawn_settings.scenes.pick_random()
 	_current_node = scene.instantiate()
-	_current_node.position = position
+	_current_node.global_position = position
 	
 	add_child(_current_node)
 
