@@ -7,6 +7,7 @@ extends Control
 @onready var pause_label: Label = $PauseLabel
 @onready var game_over_label: Label = $GameOverLabel
 @onready var game_won_label: Label = $GameWonLabel
+@onready var game_won_effect: CPUParticles2D = $GameWonEffect
 
 
 func show_start_label() -> void:
@@ -51,3 +52,4 @@ func show_game_won_label() -> void:
 	pause_label.hide()
 	game_over_label.hide()
 	game_won_label.show()
+	game_won_effect.emitting = true
