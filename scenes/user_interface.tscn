@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd3myu31d37mo"]
+[gd_scene load_steps=4 format=3 uid="uid://cd3myu31d37mo"]
 
 [ext_resource type="Theme" uid="uid://c0vxpi7ss20u6" path="res://resources/ui_theme.tres" id="1_syvep"]
 [ext_resource type="Script" uid="uid://bxsm6tru7fhlm" path="res://scripts/user_interface.gd" id="2_l2bgj"]
+[ext_resource type="Texture2D" uid="uid://bg8dve4rdsdd3" path="res://assets/art/star_01.png" id="3_y1h3b"]
 
 [node name="UserInterface" type="Control"]
 z_index = 1
@@ -99,13 +100,19 @@ text = "You win!"
 uppercase = true
 
 [node name="GameWonEffect" type="CPUParticles2D" parent="."]
+modulate = Color(0, 0.633333, 1, 0.498039)
 position = Vector2(320, 240)
 emitting = false
-amount = 2500
+amount = 500
+texture = ExtResource("3_y1h3b")
+lifetime = 1.25
 one_shot = true
-explosiveness = 0.5
+speed_scale = 1.5
+explosiveness = 0.75
 direction = Vector2(0, -1)
 spread = 180.0
 gravity = Vector2(0, 200)
 initial_velocity_min = 250.0
-initial_velocity_max = 250.0
+initial_velocity_max = 500.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1

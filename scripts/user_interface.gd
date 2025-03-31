@@ -52,4 +52,4 @@ func show_game_won_label() -> void:
 	pause_label.hide()
 	game_over_label.hide()
 	game_won_label.show()
-	game_won_effect.emitting = true
+	game_won_effect.set_emitting(true)
