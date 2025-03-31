@@ -28,6 +28,10 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 
 ## Credits
 
+### Art
+
+- Game won particle texture: [star_01 (Particle Pack)](https://www.kenney.nl/assets/particle-pack) by [Kenney](https://www.kenney.nl/)
+
 ### Audio
 
 - Background music: [Do Not Wake The Snake](https://pixabay.com/music/world-do-not-wake-the-snake-164474/) by [PaoloArgento](https://pixabay.com/users/paoloargento-38603296/)

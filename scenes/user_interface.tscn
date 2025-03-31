@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://c0vxpi7ss20u6" path="res://resources/ui_theme.tres" id="1_syvep"]
 [ext_resource type="Script" uid="uid://bxsm6tru7fhlm" path="res://scripts/user_interface.gd" id="2_l2bgj"]
-[ext_resource type="Texture2D" uid="uid://bg8dve4rdsdd3" path="res://assets/art/star_01.png" id="3_y1h3b"]
+[ext_resource type="Texture2D" uid="uid://bg8dve4rdsdd3" path="res://assets/art/star_particle_texture.png" id="3_y1h3b"]
 
 [node name="UserInterface" type="Control"]
 z_index = 1
