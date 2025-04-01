@@ -25,6 +25,12 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 - Move right: `Left Joystick Right` or `D-pad Right`
 - Start / restart game: `Bottom Action` (Sony: `Cross`, Xbox: `A`, Nintendo `B`)
 - Pause / unpause game: `Start` (Sony: `Start`, Xbox: `Menu`, Nintendo `+`)
+  
+### Touch Screen (only visible on touch devices)
+
+- Move up / down / left / right: `Onscreen Arrow Buttons`
+- Start / restart game: `Onscreen Play Button`
+- Pause / unpause game: `Onscreen Pause Button`
 
 ## Credits
 
