@@ -1,9 +1,20 @@
 class_name SnakeController
 extends Node2D
+## The snake controller is responsible for moving and rotating the snake's parts.
+##
+## It is responsible for controlling the snake's head, which follows the player's input.
+## It is responsible for controlling the snake's bodies, which follow the snake's head.
+## It is responsible for controlling the snake's tail, which follows the snake's bodies.
+## It is responsible for adding a new body if the snake eats a fruit.
+## It sends a signal when the snake dies.
+## It is responsible for playing sounds related to the snake.
 
+## The signal emitted when a fruit was eaten by the snake.
 signal ate_fruit
+## The signal emitted when the snake dies.
 signal died
 
+## The direction in which the snake is heading.
 enum Direction {
 	UP,
 	DOWN,
@@ -11,8 +22,11 @@ enum Direction {
 	RIGHT,
 }
 
+## The settings of the arena containing sizes as well as currently occupied positions.
 @export var arena_settings: ArenaSettings
+## The time elapsed before the snake moves.
 @export var movement_timeout: float = 0.25
+## The radius (square) around the snake's head where no items can be spawned.
 @export var clear_area_radius: int = 2
 
 @onready var head: SnakeHead = $Head
@@ -34,11 +48,19 @@ var _move                  := false
 var _elapsed_movement_time := 0.0
 var _add_body_on_next_move := false
 
+## The frame of the snake sprite where the mouth is opened
 const SNAKE_HEAD_MOUTH_OPENED_FRAME := 4
+
+## The frame of the snake sprite where the mouth is closed.
 const SNAKE_HEAD_MOUTH_CLOSED_FRAME := 5
 
+## The frame of the snake sprite where the tail is pointing upwards.
 const SNAKE_TAIL_UPPER_FRAME := 0
+
+## The frame of the snake sprite where the tail is pointing in the middle.
 const SNAKE_TAIL_MIDDLE_FRAME := 2
+
+## The frame of the snake sprite where the tail is pointing downwards.
 const SNAKE_TAIL_LOWER_FRAME := 1
 
 
@@ -68,19 +90,22 @@ func _physics_process(delta: float) -> void:
 	if _move:
 		_elapsed_movement_time += delta
 		
+		# update snake as soon as the movement timeout has been reached
 		if _elapsed_movement_time >= movement_timeout:
 			_elapsed_movement_time = 0.0
 			
 			_update_head()
 			_update_bodies()
 			_update_tail()
-	
-	
+
+
+## Starts the snake and play the start sound.
 func start() -> void:
 	_move = true
 	sound_controller.play_start_sound()
-	
-	
+
+
+## Resets the snakes parts.
 func reset() -> void:
 	_reset_head()
 	_reset_bodies()
@@ -89,8 +114,9 @@ func reset() -> void:
 	show()
 	
 	_reset_directions()
-	
-	
+
+
+## Gets the currently occupied positions of the snake including a radius around its head where no items should be spawned.
 func get_occupied_positions() -> Array[Vector2]:
 	var occupied_positions: Array[Vector2] = []
 	# NOTE: clear area of clear_area_radius around snake head
@@ -140,6 +166,8 @@ func _move_head() -> void:
 	
 	# NOTE: needed to take into account recent snake head rotation
 	head.collision_detector.force_raycast_update()
+	# detect collision on next move before actually moving the snake
+	# this prevents strange things from happening when two bodies collide
 	if head.collision_detector.is_colliding():
 		var collider: Node = head.collision_detector.get_collider()
 		if collider is Wall:
@@ -173,8 +201,10 @@ func _move_bodies() -> void:
 	_last_body_positions.clear()
 	_last_body_positions.append(bodies[0].position)
 
+	# first body follows head
 	bodies[0].position = _last_head_position
 
+	# all other bodies follow preceding body
 	for i in range(1, bodies.size()):
 		_last_body_positions.append(bodies[i].position)
 		bodies[i].position = _last_body_positions[i - 1]
@@ -199,7 +229,7 @@ func _add_body() -> void:
 	bodies.append(new_body)
 	add_child(new_body)
 	
-	# INFO: set last body position so that tail does not move
+	# INFO: set last body position to tail position so that tail does not move
 	_last_body_positions.append(tail.position)
 	_add_body_on_next_move = false
 	
@@ -218,6 +248,7 @@ func _animate_tail() -> void:
 
 
 func _move_tail() -> void:
+	# follow last body
 	tail.position = _last_body_positions[-1]
 
 
@@ -274,7 +305,8 @@ func _reset_head() -> void:
 func _reset_bodies() -> void:
 	for i in range(1, bodies.size()):
 		bodies[i].queue_free()
-		
+	
+	# NOTE: ignore error code
 	var _error_code := bodies.resize(1)
 	bodies[0].position = _initial_body_position
 	bodies[0].rotation_degrees = 0

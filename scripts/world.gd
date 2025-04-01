@@ -1,9 +1,12 @@
 class_name World
 extends Node2D
 
+## The signal emitted when the snake eats a fruit.
 signal snake_ate_fruit
+## The signal emitted when the snake dies.
 signal snake_died
 
+## The settings of the arena containing sizes as well as currently occupied positions.
 @export var arena_settings: ArenaSettings
 
 @onready var snake_controller: SnakeController = $SnakeController
@@ -30,11 +33,15 @@ func _on_snake_died() -> void:
 	snake_died.emit()
 
 
+## Starts the current world.
+## Starts the snake and the spawners.
 func start() -> void:
 	snake_controller.start()
 	fruits_controller.start()
 	sweets_controller.start()
-	
-	
+
+
+## Resets the current world.
+## Resets the snake to its original size and position.
 func reset() -> void:
 	snake_controller.reset()

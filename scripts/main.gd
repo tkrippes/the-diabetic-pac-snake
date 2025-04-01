@@ -1,8 +1,14 @@
+class_name Main
 extends Node
+## Main is responsible for managing the main flow of the game.
+##
+## It controls the current game state and manages the game state switches.
+## Furthermore it updates the UI based on the current events happening in the game.
 	
 var _score: int = 0
 var _state: GameState = GameState.START
 
+## The game state enumeration.
 enum GameState {
 	START,
 	RUNNING,
@@ -11,6 +17,7 @@ enum GameState {
 	GAME_WON
 }
 
+## The score required to win the game.
 @export var winning_score: int = 100
 
 @onready var world: World = $World
