@@ -31,6 +31,7 @@ die from diabetes. The snake will also die by trying to eat the wall or itself.
 ### Art
 
 - Game won particle texture: [star_01 (Particle Pack)](https://www.kenney.nl/assets/particle-pack) by [Kenney](https://www.kenney.nl/)
+- Touch control buttons: [Yet Another icons (beta)](https://prinbles.itch.io/yet-another-icons) by [Prinbles](https://itch.io/profile/prinbles)
 
 ### Audio
 
