@@ -3,27 +3,27 @@
 [ext_resource type="Theme" uid="uid://c0vxpi7ss20u6" path="res://resources/ui_theme.tres" id="1_syvep"]
 [ext_resource type="Script" uid="uid://bxsm6tru7fhlm" path="res://scripts/user_interface.gd" id="2_l2bgj"]
 [ext_resource type="Texture2D" uid="uid://bg8dve4rdsdd3" path="res://assets/art/star_particle_texture.png" id="3_y1h3b"]
-[ext_resource type="Texture2D" uid="uid://bwn2s6b7nfe63" path="res://assets/art/fruits/apple.png" id="4_jbsfc"]
-[ext_resource type="Texture2D" uid="uid://dtbfu2edkm1tr" path="res://assets/art/fruits/strawberry.png" id="5_lmgon"]
-[ext_resource type="Texture2D" uid="uid://cc501387ctwrj" path="res://assets/art/fruits/orange.png" id="6_xsrv6"]
+[ext_resource type="Texture2D" uid="uid://lccs0wtdu65v" path="res://assets/art/buttons/arrow.png" id="4_xsrv6"]
+[ext_resource type="Texture2D" uid="uid://ttk14vb04pif" path="res://assets/art/buttons/play.png" id="5_lmgon"]
+[ext_resource type="Texture2D" uid="uid://c4ym6llsmjyjw" path="res://assets/art/buttons/pause.png" id="6_xsrv6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cufge"]
-radius = 12.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmgon"]
-radius = 12.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xsrv6"]
-radius = 12.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdud1"]
-radius = 12.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aisij"]
-radius = 12.0
+radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prbuy"]
-radius = 12.0
+radius = 32.0
 
 [node name="UserInterface" type="Control"]
 z_index = 1
@@ -148,51 +148,45 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RightButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(640, 416)
-rotation = 1.5708
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_jbsfc")
+position = Vector2(580, 420)
+texture_normal = ExtResource("4_xsrv6")
 shape = SubResource("CircleShape2D_cufge")
 action = "move_right"
 visibility_mode = 1
 
 [node name="LeftButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(448, 480)
-rotation = -1.5708
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_jbsfc")
+position = Vector2(508, 476)
+rotation = 3.14159
+texture_normal = ExtResource("4_xsrv6")
 shape = SubResource("CircleShape2D_lmgon")
 action = "move_left"
 visibility_mode = 1
 
 [node name="UpButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(512, 352)
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_jbsfc")
+position = Vector2(516, 412)
+rotation = -1.5708
+texture_normal = ExtResource("4_xsrv6")
 shape = SubResource("CircleShape2D_xsrv6")
 action = "move_up"
 visibility_mode = 1
 
 [node name="DownButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(576, 480)
-rotation = 3.14159
-scale = Vector2(2, 2)
-texture_normal = ExtResource("4_jbsfc")
+position = Vector2(572, 420)
+rotation = 1.5708
+texture_normal = ExtResource("4_xsrv6")
 shape = SubResource("CircleShape2D_sdud1")
 action = "move_down"
 visibility_mode = 1
 
-[node name="StartButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(0, 416)
-scale = Vector2(2, 2)
+[node name="PlayButton" type="TouchScreenButton" parent="TouchControls"]
+position = Vector2(4, 420)
 texture_normal = ExtResource("5_lmgon")
 shape = SubResource("CircleShape2D_aisij")
 action = "enter"
 visibility_mode = 1
 
 [node name="PauseButton" type="TouchScreenButton" parent="TouchControls"]
-position = Vector2(0, 352)
-scale = Vector2(2, 2)
+position = Vector2(4, 356)
 texture_normal = ExtResource("6_xsrv6")
 shape = SubResource("CircleShape2D_prbuy")
 action = "pause"
